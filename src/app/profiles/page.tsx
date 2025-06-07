@@ -7,13 +7,13 @@ const profiles = [
     emoji: "🧑‍💻",
     title: "SDE",
     description: "For those who love building software, systems, and tools.",
-    route: "/profiles/sde",
+    route: "/profiles/tech/sde",
   },
   {
     emoji: "📊",
     title: "Data",
     description: "Dive into analytics, machine learning, and data science.",
-    route: "/profiles/data",
+    route: "/profiles/tech/data",
   },
   {
     emoji: "💰",
@@ -62,4 +62,4 @@ export default function ProfilesPage() {
       </div>
     </div>
   );
-} 
+}
