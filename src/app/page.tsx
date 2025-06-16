@@ -28,20 +28,20 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center px-2 sm:px-4 py-20 text-center w-full max-w-7xl mx-auto animate-fade-in min-h-[40vh] mt-6 mb-6">
-        <div className="absolute -top-32 -right-32 w-[20rem] h-[20rem] sm:w-[28rem] sm:h-[28rem] bg-gradient-to-bl from-[#FFEA00]/30 via-[#FFBB00]/20 to-[#FF9900]/10 rounded-full blur-2xl z-0" />
-        <div className="absolute -bottom-32 -left-32 w-[20rem] h-[20rem] sm:w-[28rem] sm:h-[28rem] bg-gradient-to-tl from-[#FF9900]/30 via-[#FFEA00]/20 to-[#FFBB00]/10 rounded-full blur-2xl z-0" />
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-center mb-8 w-full flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFF9E3] via-[#FFEA00] to-[#FF9900] drop-shadow-lg">
+        {/* Removed yellow animated background circles from hero section */}
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-center mb-8 w-full flex flex-wrap items-center justify-center gap-x-2 gap-y-2 relative">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] drop-shadow-lg">
             <LoadingText text="Why This" />
           </span>
-          <span className="inline-block px-4 py-1 rounded-2xl bg-gradient-to-br from-[#FFEA00] to-[#FF9900] text-black font-extrabold shadow-lg mx-2">
+          <span className="inline-block px-4 py-1 rounded-2xl text-[#FFB300] font-extrabold shadow-lg mx-2 bg-transparent animate-fall absolute left-1/2 -translate-x-1/2 -top-16 sm:static sm:translate-x-0 sm:top-0" style={{animation: 'fall 1s cubic-bezier(0.23, 1, 0.32, 1)'}}>
             <LoadingText text="Summer" delay={450} />
           </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFEA00] via-[#FF9900] to-[#FFF9E3] drop-shadow-lg">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFD600] via-[#FFF700] to-[#FFF9E3] drop-shadow-lg">
             <LoadingText text="Matters" delay={700} />
           </span>
+          <span className="text-[#FFB300] text-4xl sm:text-6xl font-extrabold ml-2">?</span>
         </h1>
-    <Link href="/profiles" className="inline-block px-6 py-2 bg-gradient-to-r from-[#FF9900] to-[#FFEA00] text-[#181818] font-bold rounded-lg shadow-lg hover:scale-105 hover:shadow-yellow-400/60 hover:-translate-y-1 hover:bg-gradient-to-l hover:from-[#FFEA00] hover:to-[#FF9900] focus:outline-none focus:ring-4 focus:ring-[#FFEA00]/50 transition-all duration-300 text-base tracking-wide mt-4">
+        <Link href="/profiles" className="inline-block px-8 py-3 bg-[#FFD600] text-[#181818] font-semibold rounded-full shadow-lg hover:bg-[#FFB300] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#FFD600]/40 transition-all duration-300 text-lg tracking-wide mt-4 border border-[#FFB300]/60">
           <LoadingText text="Explore Profiles" delay={1000} />
         </Link>
       </section>
@@ -76,3 +76,11 @@ export default function Home() {
     </>
   );
 }
+
+/* Add this to your global CSS (e.g., globals.css):
+@keyframes fall {
+  0% { transform: translateY(-120px) scale(0.7); opacity: 0; }
+  70% { transform: translateY(10px) scale(1.05); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+*/
