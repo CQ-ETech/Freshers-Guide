@@ -52,7 +52,7 @@ const Carousel = () => {
   const [expandedImage, setExpandedImage] = useState(-1);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const clickedImage = Number(e.target.id);
+    const clickedImage = Number(e.target);
     console.log(expandedImage, clickedImage);
     if(expandedImage === clickedImage) {
       console.log(expandedImage);
@@ -80,12 +80,12 @@ const Carousel = () => {
   };
 
   return ( 
-    <div>
+    <div className="bg-gradient-to-br from-[#1c1c1c] via-[#292929] to-[#0f0f0f] text-[#E2F8FA]">
       <div className="carousel-1 flex shrink-0 items-center overflow-hidden relative w-[400px] h-[400px] m-4">
         {images.map((image) => (
           <motion.div 
             key={image.id} 
-            className="carousel-item w-full h-full shrink-0 relative"
+            className="carousel-item w-full h-full shrink-0 relative border border-[#FFBB00] rounded-lg shadow-lg"
             variants={variants}
             initial="initial"
             animate="finally"
@@ -100,7 +100,7 @@ const Carousel = () => {
         {images.map((image) => (
           image.id === topId && <motion.div
               key={image.id}
-              className="carousel-item w-full h-full shrink-0 relative"
+              className="carousel-item w-full h-full shrink-0 relative border border-[#FFBB00] rounded-lg shadow-lg"
               initial={{ opacity: 1 }}
               animate={{ opacity: 0.15 }}
               transition={{ duration: 3 }}
@@ -115,7 +115,7 @@ const Carousel = () => {
             {images.map((image) => (
                 <motion.div 
                   key={image.id} 
-                  className={`carousel-item w-[400px] h-[400px] shrink-0 relative border mb-0`}
+                  className={`carousel-item w-[400px] h-[400px] shrink-0 relative border border-[#FFBB00] rounded-lg shadow-lg`}
                   initial={{ opacity: 0.5 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
@@ -126,7 +126,7 @@ const Carousel = () => {
                       animate={{ x: '382px' }}
                       transition={{ duration: 3, ease: "easeInOut" }}
                     >
-                      <BsTriangleFill className={`text-black text-1xl`} />
+                      <BsTriangleFill className={`text-[#FFEA00] text-1xl`} />
                     </motion.section>
                   )}
                   <Image src={image.src} alt={image.alt} className="w-full h-full object-cover" /> 
@@ -137,7 +137,7 @@ const Carousel = () => {
             <div key={image.id}>
               {image.id === topId && (
                 <div className="w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-                  <h2 className="text-white text-2xl font-bold">{image.alt}</h2>
+                  <h2 className="text-[#FFEA00] text-2xl font-bold">{image.alt}</h2>
                 </div>
               )}
             </div>))}
@@ -150,7 +150,7 @@ const Carousel = () => {
               onClick={handleClick}
               initial={{ width: '80px' }}
               animate={{ width: topId === image.id ? '400px' : '80px' }}
-              className="inline-block m-2 relative"
+              className="inline-block m-2 relative border border-[#FFBB00] rounded-lg shadow-lg"
             >
               <Image src={image.src} 
                 id={`${image.id}`}
@@ -164,7 +164,7 @@ const Carousel = () => {
                   animate={{ width: '100%', height: '400px', opacity: 0.5 }}
                   id={image.id.toString()}
                 >
-                  <h2 className="text-white text-2xl font-bold" id={image.id.toString()}>{image.alt}</h2>
+                  <h2 className="text-[#FFEA00] text-2xl font-bold" id={image.id.toString()}>{image.alt}</h2>
                 </motion.div>
               )}
             </motion.div>
