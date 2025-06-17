@@ -28,7 +28,7 @@ export default function RootLayout({
         <nav className="bg-white/15 backdrop-blur-lg text-[#FFBB00] p-4 shadow-lg fixed top-0 left-0 right-0 z-50 w-full rounded-none">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-4">
-              <Image src="/android-chrome-192x192.png" alt="CQ Logo" width={50} height={50} />
+              <Image src="/android-chrome-192x192.png" alt="CQ Logo" width={50} height={50} className="bg-white rounded-full p-1 shadow-lg" />
               <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#FFEA00] via-[#FFEA00] to-[#FFBB00] drop-shadow-lg transition duration-300">
                 Summer Guide
               </span>
