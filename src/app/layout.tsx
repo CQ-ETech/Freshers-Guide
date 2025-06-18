@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Comfortaa } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
 import Footer from '../components/footer/page';
 import Image from 'next/image';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Comfortaa({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Summer Guide',
