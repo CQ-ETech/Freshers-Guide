@@ -1,9 +1,5 @@
-.body {
-  background-color: #ffbb00;
-}
-
 .animation {
-  border: dashed rgb(44, 44, 44);
+  border: dashed rgb(50, 50, 50);
   border-width: 0px 1px 0px 1px;
 }
 

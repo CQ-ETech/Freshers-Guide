@@ -98,7 +98,7 @@ const Profiles = () => {
   
 
   return ( 
-    <div className='body bg-gradient-to-b from-#ff9900 via-#ffea00 to-#ffbb00 text-white min-h-screen flex flex-col items-center justify-center'>
+    <div className='body mt-[-20px] bg-gradient-to-b from-[#222222] via-[#323232] to-[#222222] text-white min-h-screen flex flex-col items-center justify-center'>
       <div className='flex justify-around w-full mt-5'>
         {data.map((profile) => (
           activeId === profile.id && 
