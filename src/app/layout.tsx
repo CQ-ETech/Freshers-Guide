@@ -4,6 +4,7 @@ import './globals.css';
 import Link from 'next/link';
 import Footer from '../components/footer/page';
 import Image from 'next/image';
+import GoldParticles from '../components/GoldParticles';
 
 const inter = Comfortaa({ subsets: ['latin'] });
 
@@ -19,18 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen bg-gradient-to-br from-[#1c1c1c] via-[#292929] to-[#0f0f0f] dark:bg-gray-900 relative`}>
-        {/* Custom background image outside the main content box */}
-        <div className="fixed inset-0 -z-10">
-          <img src="/pexels-fwstudio-33348-129733.jpg" alt="Background" className="w-full h-full min-h-screen min-w-full object-cover object-center" loading="eager" decoding="async" style={{filter: 'blur(2px) brightness(0.7)'}} />
-        </div>
-        {/* Removed animated background gradient circles */}
-        <nav className="bg-white/15 backdrop-blur-lg text-[#FFBB00] p-4 shadow-lg fixed top-0 left-0 right-0 z-50 w-full rounded-none">
+      <body className={
+        `${inter.className} min-h-screen relative overflow-x-hidden animate-gradient-move bg-[#181818]`
+      }>
+        <GoldParticles />
+        <nav className="bg-[#181818]/95 text-[#FFBB00] p-4 shadow-2xl fixed top-0 left-0 right-0 z-50 w-full rounded-none border-b border-[#FFD600]/40">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-4">
               <Image src="/android-chrome-192x192.png" alt="CQ Logo" width={50} height={50} className="bg-white rounded-full p-1 shadow-lg" />
               <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#FFEA00] via-[#FFEA00] to-[#FFBB00] drop-shadow-lg transition duration-300">
-                Summer Guide
+                Freshers Guide
               </span>
             </Link>
             <div className="space-x-8 text-xl">
@@ -65,7 +64,9 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="min-h-screen relative z-10 pt-28">{children}</main>
+        <main className="min-h-screen relative z-10 pt-28 border-b border-[#232323]/60">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
