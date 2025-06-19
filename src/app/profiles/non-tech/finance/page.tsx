@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaCogs, FaLightbulb, FaUsers, FaChartLine, FaRocket } from 'react-icons/fa';
+import { FaChartPie, FaSearchDollar, FaBullhorn, FaBalanceScale, FaBriefcase } from 'react-icons/fa';
 
 const steps = [
-  { icon: '🧠', heading: 'Understand Product Domain', desc: 'Grasp fundamentals of product lifecycle, management principles, and product-market fit.' },
-  { icon: '🔍', heading: 'User Research', desc: 'Learn user research techniques like surveys, interviews, and usability testing.' },
-  { icon: '📝', heading: 'Documentation & PRDs', desc: 'Create product requirement documents, specs, and feature briefs.' },
-  { icon: '📊', heading: 'Analytics & Metrics', desc: 'Track key performance indicators (KPIs), funnels, and user behavior.' },
-  { icon: '🤝', heading: 'Cross-functional Collaboration', desc: 'Coordinate with design, tech, and marketing teams effectively.' },
-  { icon: '🚀', heading: 'Go-to-Market Strategy', desc: 'Plan launches, pricing, and positioning for product releases.' },
-  { icon: '🎓', heading: 'Courses & Certifications', desc: 'Enroll in product management courses and attend PM workshops.' },
-  { icon: '📣', heading: 'Showcase & Portfolio', desc: 'Build a product portfolio or share product breakdowns publicly.' },
+  { icon: '📘', heading: 'Basics of Finance', desc: 'Start with understanding accounting, economics, and basic financial principles.' },
+  { icon: '📈', heading: 'Financial Markets', desc: 'Learn about stocks, bonds, mutual funds, and how markets function.' },
+  { icon: '🧮', heading: 'Tools and Software', desc: 'Get hands-on with Excel, Google Sheets, and financial calculators.' },
+  { icon: '📝', heading: 'Budgeting & Planning', desc: 'Understand personal budgeting, corporate planning, and forecasting.' },
+  { icon: '🎓', heading: 'Financial Courses', desc: 'Take beginner-friendly courses on platforms like Coursera, Udemy, or NPTEL.' },
+  { icon: '💼', heading: 'Internships & Projects', desc: 'Apply concepts through internships or by analyzing real-world finance case studies.' },
+  { icon: '📜', heading: 'Certifications', desc: 'Pursue non-technical credentials like BMC, NSE, or CFA Level 1.' },
+  { icon: '📣', heading: 'Showcase Work', desc: 'Share insights, case studies, and projects on LinkedIn or personal blogs.' },
 ];
 
 const opportunities = [
-  { title: 'Product Manager', detail: 'Own end-to-end product development and strategy.', icon: <FaCogs size={32} /> },
-  { title: 'Product Analyst', detail: 'Use data to support decision-making and improve product experience.', icon: <FaChartLine size={32} /> },
-  { title: 'Growth Product Roles', detail: 'Focus on metrics like retention, activation, and conversion.', icon: <FaRocket size={32} /> },
-  { title: 'UX Researcher', detail: 'Understand user behavior and translate findings into actionable insights.', icon: <FaUsers size={32} /> },
-  { title: 'Product Strategist', detail: 'Work on long-term product vision, roadmapping, and competitive analysis.', icon: <FaLightbulb size={32} /> },
+  { title: 'Finance Analyst Roles', detail: 'Work with startups or corporates analyzing financial data.', icon: <FaChartPie size={32} /> },
+  { title: 'Investment Research', detail: 'Join equity research teams or work with financial advisors.', icon: <FaSearchDollar size={32} /> },
+  { title: 'Corporate Strategy', detail: 'Contribute to financial modeling and strategic planning.', icon: <FaBalanceScale size={32} /> },
+  { title: 'Financial Journalism', detail: 'Write or report on markets, policy, and business trends.', icon: <FaBullhorn size={32} /> },
+  { title: 'Freelance Finance Consulting', detail: 'Offer budgeting, forecasting, and planning services.', icon: <FaBriefcase size={32} /> },
 ];
 
 const tips = [
-  'Follow top PMs on LinkedIn and Medium.',
-  'Practice writing PRDs and feature breakdowns.',
-  'Participate in product hackathons or build side projects.',
-  'Understand basic design and development tools.',
-  'Stay updated with the latest product trends and tools.'
+  'Start reading financial news daily to build familiarity.',
+  'Practice with real-world data sets for better insight.',
+  'Join finance forums and LinkedIn groups for networking.',
+  'Consistently track your own expenses to develop habits.',
+  'Keep refining your resume and LinkedIn with projects.'
 ];
 
 export default function RoadmapPlanning() {
@@ -48,21 +48,21 @@ export default function RoadmapPlanning() {
           className="flex flex-col items-center"
         >
           <div className="mb-3 text-yellow-300">
-            <FaCogs size={40} />
+            <FaChartPie size={40} />
           </div>
           <h1 className="text-6xl font-black text-yellow-200 drop-shadow-2xl tracking-tight mb-10">
-            Product
+            Finance
           </h1>
-          <p className="text-3xl text-yellow-400 tracking-widest font-extrabold drop-shadow-md uppercase mb-6">
+          <p className="text-3xl text-yellow-400 tracking-widest font-extrabold drop-shadow-md uppercase mb-4">
             Roadmap
           </p>
         </motion.div>
       </section>
 
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <div className="flex flex-wrap justify-center gap-10 relative">
+        <div className="flex flex-wrap justify-center gap-10">
           {steps.map((step, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center relative">
+            <div key={idx} className="flex flex-col items-center text-center">
               <motion.button
                 initial={{ scale: 1 }}
                 animate={{ scale: [1, 1.15, 1] }}
