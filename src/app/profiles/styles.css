@@ -2,8 +2,29 @@
   background-color: #ffbb00;
 }
 
-motion.path {
-  filter: drop-shadow(0 0 6px #32fbe2);
+.animation {
+  border: dashed rgb(44, 44, 44);
+  border-width: 0px 1px 0px 1px;
+}
+
+#link-0, #heading-0 {
+  color: #32bef2;
+}
+
+#link-1, #heading-1 {
+  color: #a66cff;
+}
+
+#link-2, #heading-2 {
+  color: #d58936;
+}
+
+.carousel h1 {
+  line-height: 65px;
+}
+
+.carousel h4 {
+  line-height: 28px;
 }
 
 .icon {
