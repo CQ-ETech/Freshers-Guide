@@ -172,87 +172,91 @@ export default function Timeline() {
   const [visible, setVisible] = useState(0);
   const cardRefs = useRef<(HTMLDivElement|null)[]>([]);
   const barContainerRef = useRef<HTMLDivElement|null>(null);
-  const [checkpointPositions, setCheckpointPositions] = useState<number[]>([]);
-  const [barStyle, setBarStyle] = useState<{top: number, height: number}>({top: 0, height: 0});
+  const progressBarRef = useRef<HTMLDivElement|null>(null);
 
-  // Calculate which card is visible (centered)
-  useEffect(() => {
-    const handleScroll = () => {
-      let minDist = Infinity;
-      let sel = 0;
-      cardRefs.current.forEach((card, i) => {
-        if (!card) return;
-        const rect = card.getBoundingClientRect();
-        const dist = Math.abs(rect.top + rect.height/2 - window.innerHeight/2);
-        if (dist < minDist) {
-          minDist = dist;
-          sel = i;
-        }
-      });
-      setVisible(sel);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Use refs to store values that change frequently without causing re-renders
+  const checkpointPositionsRef = useRef<number[]>([]);
+  const visibleIndexRef = useRef<number>(0);
+  const barStyleRef = useRef<{top: number, height: number}>({top: 0, height: 0});
 
-  // Dynamically calculate checkpoint positions (center of each card) and bar position/height
   useEffect(() => {
-    const updatePositions = () => {
-      const positions: number[] = [];
-      const container = barContainerRef.current;
-      if (!container) return;
-      const containerRect = container.getBoundingClientRect();
-      cardRefs.current.forEach(card => {
-        if (!card) return positions.push(0);
+    const cardElements = cardRefs.current.filter(Boolean) as HTMLDivElement[];
+    const progressBar = progressBarRef.current;
+    const barContainer = barContainerRef.current;
+    if (cardElements.length === 0 || !progressBar || !barContainer) return;
+
+    // --- 1. Calculate static positions ONCE ---
+    const calculatePositions = () => {
+      const containerRect = barContainer.getBoundingClientRect();
+      const positions = cardElements.map(card => {
         const cardRect = card.getBoundingClientRect();
-        // Position relative to container top
-        const center = cardRect.top + cardRect.height/2 - containerRect.top;
-        positions.push(center);
+        return cardRect.top + cardRect.height / 2 - containerRect.top;
       });
-      setCheckpointPositions(positions);
-      // Set bar style (top and height)
+      checkpointPositionsRef.current = positions;
+
       if (positions.length > 1) {
         const top = positions[0];
         const height = positions[positions.length - 1] - positions[0];
-        setBarStyle({ top, height });
+        barStyleRef.current = { top, height };
+        // Directly update bar style to prevent re-render
+        barContainer.style.setProperty('--bar-top', `${top}px`);
+        barContainer.style.setProperty('--bar-height', `${height}px`);
       }
     };
-    updatePositions();
-    window.addEventListener('resize', updatePositions);
-    window.addEventListener('scroll', updatePositions);
-    return () => {
-      window.removeEventListener('resize', updatePositions);
-      window.removeEventListener('scroll', updatePositions);
-    };
-  }, []);
 
-  // Progress bar fill calculation (relative to bar)
-  useEffect(() => {
-    const handleProgress = () => {
-      const container = barContainerRef.current;
-      if (!container || checkpointPositions.length < 2) return;
-      const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY || window.pageYOffset;
-      const containerRect = container.getBoundingClientRect();
-      const containerTop = containerRect.top + scrollY;
-      // Get absolute positions of first and last checkpoint
-      const first = checkpointPositions[0] + containerTop;
-      const last = checkpointPositions[checkpointPositions.length-1] + containerTop;
-      const centerY = scrollY + windowHeight/2;
-      let percent = ((centerY - first) / (last - first)) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      const progressBar = document.getElementById('timeline-progress-bar-vert');
-      if (progressBar) progressBar.style.height = percent + '%';
+    calculatePositions(); // Initial calculation
+
+    // --- 2. Optimized scroll handler ---
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // --- Update progress bar fill ---
+          const containerRect = barContainer.getBoundingClientRect();
+          const scrollY = window.scrollY;
+          const containerTop = containerRect.top + scrollY;
+          const firstCheckpoint = checkpointPositionsRef.current[0] + containerTop;
+          const lastCheckpoint = checkpointPositionsRef.current[checkpointPositionsRef.current.length-1] + containerTop;
+          const centerY = scrollY + window.innerHeight / 2;
+          let percent = ((centerY - firstCheckpoint) / (lastCheckpoint - firstCheckpoint)) * 100;
+          percent = Math.max(0, Math.min(100, percent));
+          progressBar.style.height = `${percent}%`;
+
+          // --- Update visible card state (only if changed) ---
+          let minDist = Infinity;
+          let newVisibleIndex = 0;
+          cardElements.forEach((card, i) => {
+            const rect = card.getBoundingClientRect();
+            const dist = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+            if (dist < minDist) {
+              minDist = dist;
+              newVisibleIndex = i;
+            }
+          });
+          
+          if (visibleIndexRef.current !== newVisibleIndex) {
+            visibleIndexRef.current = newVisibleIndex;
+            setVisible(newVisibleIndex);
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    handleProgress();
-    window.addEventListener('scroll', handleProgress);
-    window.addEventListener('resize', handleProgress);
+    
+    // --- 3. Attach event listeners ---
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', calculatePositions, { passive: true });
+
+    // Initial check
+    handleScroll();
+
     return () => {
-      window.removeEventListener('scroll', handleProgress);
-      window.removeEventListener('resize', handleProgress);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', calculatePositions);
     };
-  }, [checkpointPositions]);
+  }, []); // Empty dependency array means this runs only once on mount
 
   const checkpointCount = timelineData.length;
 
@@ -281,18 +285,26 @@ export default function Timeline() {
         </section>
 
         {/* Vertical Progress Tube */}
-        <div ref={barContainerRef} className="absolute left-0 top-0 h-full flex flex-col items-center justify-center z-50" style={{width:'80px'}}>
+        <div 
+          ref={barContainerRef} 
+          className="absolute left-0 top-0 h-full flex flex-col items-center justify-center z-50" 
+          style={{ 
+            width:'80px', 
+            '--bar-top': `${barStyleRef.current.top}px`,
+            '--bar-height': `${barStyleRef.current.height}px`,
+          } as React.CSSProperties}
+        >
           <div
             className="relative w-3 bg-[#150000] border-2 border-[#FFBB00] rounded-full overflow-visible shadow-2xl flex items-start ml-[calc(50vw-600px)]"
             style={{
               position: 'absolute',
-              top: barStyle.top,
-              height: barStyle.height,
+              top: 'var(--bar-top)',
+              height: 'var(--bar-height)',
               transition: 'top 0.2s, height 0.2s',
               boxShadow: '0 0 20px rgba(255, 187, 0, 0.2)',
             }}
           >
-            <div id="timeline-progress-bar-vert" className="absolute left-0 top-0 w-full rounded-full transition-all duration-300 ease-out shadow-[0_0_32px_8px_#FFBB0099]" style={{ height: '0%' }}>
+            <div id="timeline-progress-bar-vert" ref={progressBarRef} className="absolute left-0 top-0 w-full rounded-full transition-all duration-300 ease-out shadow-[0_0_32px_8px_#FFBB0099]" style={{ height: '0%' }}>
               <div className="w-full h-full bg-gradient-to-b from-[#FFEA00] via-[#FFBB00] to-[#731900] relative overflow-hidden rounded-full">
                 <div className="absolute top-0 left-0 w-full h-full animate-shine bg-gradient-to-r from-transparent via-[#FFF8E4]/80 to-transparent opacity-80 mix-blend-screen" style={{backgroundSize:'200% 100%'}}></div>
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{boxShadow:'0 0 32px 8px #FFBB0099, 0 0 64px 16px #FFEA0044'}}></div>
@@ -300,14 +312,14 @@ export default function Timeline() {
             </div>
 
             {/* Checkpoints */}
-            {checkpointPositions.length === checkpointCount && checkpointPositions.map((pos, i) => (
+            {checkpointPositionsRef.current.length === checkpointCount && checkpointPositionsRef.current.map((pos, i) => (
               <div
                 key={i}
                 className={`absolute left-1/2 -translate-x-1/2 w-6 h-6 rounded-full border-2 z-20 flex items-center justify-center transition-all duration-500
                   ${visible >= i
                     ? 'bg-[#FFBB00] border-[#FFF8E4] shadow-[0_0_16px_6px_#FFBB0099,0_0_0_4px_#FFEA0055] scale-110'
                     : 'bg-[#150000] border-[#731900] opacity-80 hover:opacity-100 hover:border-[#FFBB00] hover:scale-105'}`}
-                style={{ top: pos - barStyle.top - 12 }}
+                style={{ top: pos - barStyleRef.current.top - 12 }}
               >
                 <div className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${visible >= i ? 'bg-[#FFF8E4] shadow-[0_0_8px_2px_#FFEA0099]' : 'bg-[#731900]/40'}`}></div>
               </div>
@@ -324,10 +336,10 @@ export default function Timeline() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: visible === index ? 1 : 0.7, x: 0 }}
               transition={{ duration: 0.5 }}
-              className={`group bg-gradient-to-br from-[#150000]/95 via-[#150000]/90 to-[#731900]/20 backdrop-blur-sm border-l-8 rounded-2xl p-12 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-10 relative transition-all duration-700 min-h-[400px] transform perspective-1000 hover:rotate-y-2 hover:-rotate-x-2 
+              className={`group bg-gradient-to-br from-[#150000]/95 via-[#150000]/90 to-[#731900]/20 backdrop-blur-sm border-l-8 rounded-2xl p-12 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-10 relative transition-all duration-700 min-h-[400px] 
                 ${visible === index 
-                  ? 'border-[#FFBB00] scale-105 ring-2 ring-[#FFEA00]/30 shadow-[0_0_50px_-12px_#FFBB00]' 
-                  : 'border-[#731900] hover:border-[#FFBB00]/50 hover:scale-[1.03] hover:shadow-[0_0_30px_-5px_#FFBB00]'
+                  ? 'border-[#FFBB00] scale-105 ring-2 ring-[#FFEA00]/30 shadow-[0_0_40px_-10px_rgba(255,187,0,0.7)]' 
+                  : 'border-[#731900] hover:border-[#FFBB00]/50 hover:scale-[1.02] hover:shadow-[0_0_25px_-5px_rgba(255,187,0,0.5)]'
                 }`}
             >
               {/* Decorative elements */}
