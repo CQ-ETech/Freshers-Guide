@@ -158,7 +158,7 @@ const Profiles = () => {
               </section>
             </Link>
             
-            <Link href={`/profile/non-tech`}>
+            <Link href={`/profiles/non-tech`}>
               <section
                 ref={documentRef}
                 className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
