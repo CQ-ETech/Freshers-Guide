@@ -86,7 +86,7 @@ const timelineData = [
     note: "Ideal time to be good in a particular skill",
     details: [
       "Use this time to become proficient in a particular skill.",
-      "Work on personal projects or freelance work.",
+      "Work on personal projects.",
       "Consider internships or research opportunities."
     ]
   },
@@ -104,10 +104,10 @@ const timelineData = [
   {
     title: "Winter Break",
     months: "Dec 2026",
-    note: "Prep for next internship season or build projects",
+    note: "Prep for next internship phase build projects",
     details: [
-      "Prepare for the next internship season.",
-      "Work on personal projects or freelance work.",
+      "Prepare for the next internship phase.",
+      "Work on personal projects.",
       "Take some time to relax and recharge."
     ]
   },
@@ -269,7 +269,7 @@ export default function Timeline() {
       <div className="relative z-[3]">
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center px-2 sm:px-4 py-24 text-center w-full max-w-4xl mx-auto animate-fade-in min-h-[40vh] mb-16">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] drop-shadow-[0_4px_32px_#FFD60099] animate-pulse">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] py-4">
             Your College Timeline
           </h1>
           <p className="text-lg md:text-2xl text-[#FFF8E4] mb-2 font-medium max-w-2xl mx-auto">
