@@ -108,14 +108,14 @@ const Profiles = () => {
             transition={{ duration: 15 }}
           >
 
-            <h3 className={`text-2xl font-bold text-[${profile.iconColor}] ml-8 mt-10 mb-8`} id={`heading-${profile.id}`}>
+            <h3 className={`text-2xl font-bold text-[${profile.iconColor}] ml-8 mt-10 mb-4`} id={`heading-${profile.id}`}>
               <section className={`inline-block text-[${profile.iconColor}] mr-2`}>
                 {profile.icon}
               </section>
               {profile.name}
             </h3>
 
-            <h1 className='text-5xl font-bold text-gray-300 ml-8 mt-8 mb-10'>
+            <h1 className='text-5xl font-bold text-gray-300 ml-8 mt-4 mb-10'>
               {profile.heading}
             </h1>
 
