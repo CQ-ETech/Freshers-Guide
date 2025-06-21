@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Footer from '../components/footer/page';
 import Image from 'next/image';
 import GoldParticles from '../components/GoldParticles';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 const inter = Comfortaa({ subsets: ['latin'] });
 
@@ -66,6 +67,7 @@ export default function RootLayout({
         </nav>
         <main className="min-h-screen relative z-10 pt-28 border-b border-[#232323]/60">
           {children}
+          <ScrollToTopButton />
         </main>
         <Footer />
       </body>
