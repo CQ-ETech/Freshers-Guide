@@ -10,37 +10,37 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./../globals.css";
-import Car1 from "./../../../public/car_1.jpg";
-import Car2 from "./../../../public/car_2.jpg";
-import Car3 from "./../../../public/car_3.jpg";
-import Car4 from "./../../../public/car_4.jpg";
-import Car5 from "./../../../public/car_5.jpg";
+// import Car1 from "./../../../public/car_1.jpg";
+// import Car2 from "./../../../public/car_2.jpg";
+// import Car3 from "./../../../public/car_3.jpg";
+// import Car4 from "./../../../public/car_4.jpg";
+// import Car5 from "./../../../public/car_5.jpg";
 import Image from "next/image";
 import { BsTriangleFill } from "react-icons/bs";
 
 const images = [
   {
-    src: Car1,
-    alt: "hyper car 1",
+    src: '',
+    alt: "hyper ''1",
     id: 0,
   },
   {
-    src: Car2,
+    src: '',
     alt: "buggati",
     id: 1,
   },
   {
-    src: Car3,
+    src: '',
     alt: "koenigsegg",
     id: 2,
   },
   {
-    src: Car4,
+    src: '',
     alt: "mclaren",
     id: 3,
   },
   {
-    src: Car5,
+    src: '',
     alt: "porsche",
     id: 4,
   },
