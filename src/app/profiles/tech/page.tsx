@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg";
+import Carousel from './carousel';
+import { data } from './data';
 import "./styles.css";
 
 const Tech = () => {
@@ -41,6 +43,8 @@ const Tech = () => {
           <Image src={LaptopImage} alt={`hero image`} className="w-full min-h-screen" />
         </motion.div>
       </section>
+
+      <Carousel data={data} />
     </div>
    );
 }

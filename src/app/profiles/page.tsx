@@ -81,7 +81,7 @@ const Profiles = () => {
   useEffect(() => {
     setTimeout(() => {
       setActiveId((activeId + 1) % 3);
-    }, 12000);
+    }, 15000);
   }, [activeId]);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const Profiles = () => {
             key={profile.id}
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0, 0.5, 1, 1, 1, 1, 0] }}
-            transition={{ duration: 12 }}
+            transition={{ duration: 15 }}
           >
 
             <h3 className={`text-2xl font-bold text-[${profile.iconColor}] ml-8 mt-10 mb-8`} id={`heading-${profile.id}`}>
@@ -140,14 +140,10 @@ const Profiles = () => {
 
             <motion.path 
               d={pathD}
-              stroke={`${activeId === 0 ? '#32bef2' : 
-                activeId === 1 ? '#a66cff' : 
-                activeId === 2 && '#b58936'
-              }`}
               strokeWidth="2"
               fill="none"
-              animate={{ pathLength: [0, 1, 1, 0] }}
-              transition={{ duration: 12, repeat: Infinity }}
+              animate={{ pathLength: [0, 1, 1, 0], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] }}
+              transition={{ duration: 15, repeat: Infinity }}
             />
           </svg>
 
