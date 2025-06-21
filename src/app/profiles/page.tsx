@@ -96,8 +96,8 @@ const Profiles = () => {
   }, []);
 
   return ( 
-    <div className='body mt-[-20px] bg-gradient-to-b from-[#222222] via-[#323232] to-[#222222] text-white min-h-screen flex flex-col items-center justify-center'>
-      <div className='flex justify-around w-full mt-5'>
+    <div className={`body mt-[-20px] ${/*bg-gradient-to-b from-[#222222] via-[#323232] to-[#222222]*/'bg-none'} text-white min-h-screen flex flex-col items-center justify-center`}>
+      <div className='flex justify-around w-full'>
         {data.map((profile) => (
           activeId === profile.id && 
           <motion.section
@@ -123,7 +123,7 @@ const Profiles = () => {
               {profile.description}
             </h4>
 
-            <section className='text-right m-8'>
+            <section className='text-right m-8 pt-8'>
               <Link href={`${profile.href}`} className={`text-[${profile.iconColor}] underline hover:no-underline`} id={`link-${profile.id}`}>
                 Explore More<ArrowRight color={`${profile.iconColor}`} className='inline-block' />
               </Link>
@@ -152,29 +152,35 @@ const Profiles = () => {
           </svg>
 
           <section className='flex items-center justify-evenly w-full'>
-            <section 
-              ref={laptopRef}
-              className={`${activeId === 0 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
-              id="0"
-            >
-              <FaCode size='36px' id="0" />
-            </section>
+            <Link href={`/profiles/tech`}>
+              <section 
+                ref={laptopRef}
+                className={`${activeId === 0 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+                id="0"
+              >
+                <FaCode size='36px' id="0" />
+              </section>
+            </Link>
+            
+            <Link href={`/profile/non-tech`}>
+              <section
+                ref={documentRef}
+                className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+                id="1"
+              > 
+                <Landmark size='36px' id="1" />
+              </section>
+            </Link>
 
-            <section
-              ref={documentRef}
-              className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
-              id="1"
-            > 
-              <Landmark size='36px' id="1" />
-            </section>
-
-            <section
-              ref={coreRef}
-              className={`${activeId === 2 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
-              id="2"
-            >
-              <Factory size='36px' id="2" />
-            </section>
+            <Link href={`/profiles/core`}>
+              <section
+                ref={coreRef}
+                className={`${activeId === 2 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+                id="2"
+              >
+                <Factory size='36px' id="2" />
+              </section>
+            </Link>
           </section>
         </section>
       </div>
