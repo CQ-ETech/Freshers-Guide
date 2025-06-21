@@ -13,6 +13,8 @@ import Link from 'next/link';
 const Profiles = () => {
 
   const [activeId, setActiveId] = useState<number>(-1);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const laptopRef = useRef<HTMLTableSectionElement>(null);
   const documentRef = useRef<HTMLTableSectionElement>(null);
   const coreRef = useRef<HTMLTableSectionElement>(null);
@@ -20,6 +22,7 @@ const Profiles = () => {
 
   const startRef = useRef<HTMLTableSectionElement>(null);
   let endRef: React.MutableRefObject<HTMLTableSectionElement | null>;
+  let timeout;
   const [pathD, sethPathD] = useState<string>("");
 
   const updatePath = () => {
@@ -77,12 +80,39 @@ const Profiles = () => {
     }
     sethPathD(pathD);
   };
+
+  const handleClick = (evt) => {
+    const id = Number(evt.target.id);
+
+    if(timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    if(id === activeId) {
+      setIsClicked(false);
+    }
+
+    else {
+      setIsClicked(true);
+      setActiveId(id);
+    }
+  };
   
   useEffect(() => {
-    setTimeout(() => {
-      setActiveId((activeId + 1) % 3);
-    }, 15000);
-  }, [activeId]);
+    
+    if(isClicked === false) {
+      if(timeoutRef.current) clearTimeout(timeoutRef.current);
+      
+      timeoutRef.current = setTimeout(() => {
+        setActiveId((activeId + 1) % 3);
+      }, 7000);
+    }
+
+    if(isClicked === true) {
+      if(timeoutRef.current)
+        clearTimeout(timeout);
+    }
+
+    return (() => { if(timeoutRef.current) clearTimeout(timeoutRef.current); });
+  }, [activeId, isClicked]);
 
   useEffect(() => {
     updatePath();
@@ -104,8 +134,8 @@ const Profiles = () => {
             className='carousel w-[45%] relative' 
             key={profile.id}
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0, 0.5, 1, 1, 1, 1, 0] }}
-            transition={{ duration: 15 }}
+            animate={ isClicked ? { opacity: 1 } : { opacity: [0, 1, 1, 1, 1, 0] } }
+            transition={ isClicked ? { duration: 3 } : { duration: 7 } }
           >
 
             <h3 className={`text-2xl font-bold text-[${profile.iconColor}] ml-8 mt-10 mb-4`} id={`heading-${profile.id}`}>
@@ -140,43 +170,40 @@ const Profiles = () => {
 
             <motion.path 
               d={pathD}
-              strokeWidth="2"
+              strokeWidth="3"
               fill="none"
-              animate={{ pathLength: [0, 1, 1, 0], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] }}
-              transition={{ duration: 15, repeat: Infinity }}
+              animate={ isClicked ? { pathLength: [0, 1], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] } : { pathLength: [0, 1, 1, 0], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] } }
+              transition={ isClicked ? { duration: 2 } : { duration: 7, repeat: Infinity }}
             />
           </svg>
 
           <section className='flex items-center justify-evenly w-full'>
-            <Link href={`/profiles/tech`}>
-              <section 
-                ref={laptopRef}
-                className={`${activeId === 0 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
-                id="0"
-              >
-                <FaCode size='36px' id="0" />
-              </section>
-            </Link>
+            <div 
+              ref={laptopRef}
+              className={`${activeId === 0 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+              id="0"
+              onClick={handleClick}
+            >
+              <FaCode size='36px' id="0" />
+            </div>
             
-            <Link href={`/profiles/non-tech`}>
-              <section
-                ref={documentRef}
-                className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
-                id="1"
-              > 
-                <Landmark size='36px' id="1" />
-              </section>
-            </Link>
+            <div
+              ref={documentRef}
+              className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+              id="1"
+              onClick={handleClick}
+            > 
+              <Landmark size='36px' id="1" />
+            </div>
 
-            <Link href={`/profiles/core`}>
-              <section
-                ref={coreRef}
-                className={`${activeId === 2 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
-                id="2"
-              >
-                <Factory size='36px' id="2" />
-              </section>
-            </Link>
+            <div
+              ref={coreRef}
+              className={`${activeId === 2 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+              id="2"
+              onClick={handleClick}
+            >
+              <Factory size='36px' id="2" />
+            </div>
           </section>
         </section>
       </div>

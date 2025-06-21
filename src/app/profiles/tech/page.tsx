@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg";
-import Carousel from './carousel';
+import Carousel from '../carousel';
 import { data } from './data';
 import "./styles.css";
 
 const Tech = () => {
   return ( 
-    <div>
+    <div className='bg-black mb-[-20px]'>
       <section className="hero mt-[-10px] pt-5 min-h-screen w-full flex justify-between relative bg-[#000000]">
         <div className={`hero-text mt-20 w-[60%] min-h-screen overflow-hidden`}>
           <motion.h1 
@@ -38,7 +38,7 @@ const Tech = () => {
           initial={{ x: 50, opacity: 0, rotateX: 45 }}
           animate={{ x: 0, opacity: 1, rotateX: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.75 }}
+          transition={{ duration: 1.2 }}
         >
           <Image src={LaptopImage} alt={`hero image`} className="w-full min-h-screen" />
         </motion.div>
