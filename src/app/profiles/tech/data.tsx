@@ -8,8 +8,9 @@ export const data = [
     image: Simple,
     bgColor: 'bg-gray-400',
     bottomGradient: 'bg-gradient-to-t from-gray-500 via-gray-400 to gray-300',
-    textCol: 'text-gray-200',
+    textCol: 'text-white-700',
     navCol: 'text-gray-400',
+    strokeColor: 'gray',
     href: '/profiles/tech/sde',
     id: 0
   },
@@ -21,6 +22,7 @@ export const data = [
     bottomGradient: 'bg-gradient-to-t from-orange-500 via-orange-400 to orange-300',
     textCol: 'text-gray-100',
     navCol: 'text-orange-500',
+    strokeColor: 'orange',
     href: '/profiles/tech/data',
     id: 1
   },

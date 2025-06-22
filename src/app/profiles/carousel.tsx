@@ -5,7 +5,7 @@
  *  {
  *    name: //name of the profile 
  *    description: //a one liner containing who should target this (not necessary)
- *    image: //a link of the imaage to be put into the background of each item
+ *    image: //a link of the image to be put into the background of each item
  *    bgColor: //a background color for each element
  *    textCol: //a text color for each element
  *    navCol: //a color for the navigator
@@ -33,6 +33,7 @@ type item = {
   bottomGradient: string;
   textCol: string;
   navCol: string;
+  strokeColor: string;
   href: string;
   id: number;
 };
@@ -87,7 +88,7 @@ const Carousel = ({ data }: CarouselProps) => {
             <Image
               src={profile.image} 
               alt={`carousel image`} 
-              className={`shrink-0 rounded-lg object-cover w-full h-full`}
+              className={`shrink-0 rounded-t-lg object-cover w-full h-full`}
             />
           ))}
 
@@ -114,7 +115,7 @@ const Carousel = ({ data }: CarouselProps) => {
                 {profile.name}
               </motion.h3>
 
-              <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden ${profile.bottomGradient} text-left p-4 ${profile.textCol} font-semibold`}>
+              <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden text-left p-4 ${profile.textCol} font-semibold`}>
                 <motion.h3 className='text-1xl overflow-hidden pb-4'
                   animate={{ x: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, `-150%`], opacity: [0, 1, 1, 1, 1, 1, 1] }}
                   transition={{ duration: 7, delay: 0.2 }}
@@ -136,8 +137,8 @@ const Carousel = ({ data }: CarouselProps) => {
                 {profile.name}
               </motion.h3>
 
-              <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden ${profile.bottomGradient} text-left p-4 ${profile.textCol} font-semibold`}>
-                <motion.h3 className='text-1xl overflow-hidden pb-4'
+              <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden text-left p-4 ${profile.textCol} font-semibold`}>
+                <motion.h3 className='text-1xl overflow-hidden pb-4 font-light'
                 >
                   {profile.description}
                 </motion.h3>
@@ -172,7 +173,7 @@ const Carousel = ({ data }: CarouselProps) => {
             d={`M ${window.innerWidth * 0.7 * topId / data.length} 2 L ${window.innerWidth * 0.7 * (topId + 1) / data.length} 2`}
             strokeWidth='8'
             fill='none'
-            stroke={ topId === 0 ? 'gray' : 'orange'}
+            stroke={ data[topId].strokeColor }
             initial={{ pathLength: 0 }}
             animate={ isClicked ? { pathLength: 1 } : { pathLength: [0, 1] }}
             transition={ isClicked ? { duration: 1 } : { duration: 7, repeat: Infinity, ease: 'linear' }}
