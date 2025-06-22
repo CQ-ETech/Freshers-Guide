@@ -51,7 +51,7 @@ const Carousel = ({ data }: CarouselProps) => {
     const id = Number(evt.target.id);
     if(timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    if(topId === id) {
+    if(topId === id && isClicked) {
       setIsClicked(false);
     }
 
@@ -71,7 +71,7 @@ const Carousel = ({ data }: CarouselProps) => {
       if(timeoutRef.current) clearTimeout(timeoutRef.current);
 
       timeoutRef.current = setTimeout(() => {
-        setTopId((topId + 1) % 2);
+        setTopId((topId + 1) % data.length);
       }, 7000);
     }
 
@@ -81,22 +81,28 @@ const Carousel = ({ data }: CarouselProps) => {
   return ( 
     <div className="carousel text-center jusitfy-center pt-10 pb-[100px]">
       <div className="main-carousel flex justify-center">
-        <section className='flex w-[800px] h-[400px] items-center overflow-hidden relative'>
-          <Image
-            src={data[topId].image} 
-            alt={`carousel image`} 
-            className={`shrink-0 rounded-lg object-cover w-full h-full`}
-          />
-
-          <motion.section className={`h-full w-full rounded-lg ${data[topId].bgColor} absolute`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
-            transition={{ duration: 0.5 }}
-          >
-          </motion.section>
+        <section className='flex w-[70vw] h-[600px] items-center overflow-hidden relative'>
+          {data.map((profile) => (
+            topId === profile.id &&
+            <Image
+              src={profile.image} 
+              alt={`carousel image`} 
+              className={`shrink-0 rounded-lg object-cover w-full h-full`}
+            />
+          ))}
 
           {data.map((profile) => (
             topId === profile.id &&
+            <motion.section className={`h-full w-full rounded-lg ${profile.bgColor} absolute`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
+            </motion.section>
+          ))}
+
+          {data.map((profile) => (
+            !isClicked ? topId === profile.id &&
             <section key={profile.id}
               className={`w-full h-full shrink-0 absolute rounded-lg`}
             >
@@ -110,7 +116,7 @@ const Carousel = ({ data }: CarouselProps) => {
 
               <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden ${profile.bottomGradient} text-left p-4 ${profile.textCol} font-semibold`}>
                 <motion.h3 className='text-1xl overflow-hidden pb-4'
-                  animate={{ x: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, `-100%`], opacity: [0, 1, 1, 1, 1, 1, 1] }}
+                  animate={{ x: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, `-150%`], opacity: [0, 1, 1, 1, 1, 1, 1] }}
                   transition={{ duration: 7, delay: 0.2 }}
                 >
                   {profile.description}
@@ -121,30 +127,50 @@ const Carousel = ({ data }: CarouselProps) => {
                 </Link>
               </section>
             </section>
-            
+            : topId === profile.id && <section key={profile.id}
+              className={`w-full h-full shrink-0 absolute rounded-lg`}
+            >
+              <motion.h3 
+                className={`top-heading text-3xl overflow-hidden absolute top-[0px] left-[0px] p-4 font-bold ${profile.textCol}`}
+              >
+                {profile.name}
+              </motion.h3>
+
+              <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden ${profile.bottomGradient} text-left p-4 ${profile.textCol} font-semibold`}>
+                <motion.h3 className='text-1xl overflow-hidden pb-4'
+                >
+                  {profile.description}
+                </motion.h3>
+
+                <Link href={profile.href} className='underline text-1xl hover:no-underline'>
+                  Read More
+                </Link>
+              </section>
+            </section>
           ))}
         </section>
       </div>
 
-      <div className="carousel-navigation flex flex-wrap justify-center">
-        <div className='w-[800px] flex justify-center'>
+      <div className={`carousel-navigation cursor-pointer flex flex-wrap justify-center`}>
+        <div className='w-[70vw] flex justify-center'>
           {data.map((profile) => (
-            <div 
-              className={`navigator h-[150px] w-[50%] flex flex-col justify-center ${profile.navCol} text-2xl font-extrabold`}
-              // onClick={handleClick}
+            <motion.div 
+              className={`navigator h-[150px] w-[50%] flex flex-col justify-center ${profile.navCol} text-2xl font-extrabold active:underline`}
+              onClick={handleClick}
               key={profile.id}
-              id={`profile.id`}
+              id={`${profile.id}`}
+              initial={{ backgroundColor: 'none' }}
+              whileHover={{ backgroundColor: 'rgb(59, 59, 59)' }}
+              transition={{ duration: 0.2 }}
             >
               {profile.name}
-            </div>
+            </motion.div>
           ))}
         </div>
-        <svg height='2px' width='800px'>
+        <svg height='2px' width='70vw'>
           <motion.path 
-            d={`M ${400 * topId} 2 L ${400 * (topId + 1)} 2`}
+            d={`M ${window.innerWidth * 0.7 * topId / data.length} 2 L ${window.innerWidth * 0.7 * (topId + 1) / data.length} 2`}
             strokeWidth='8'
-            strokeDasharray='800'
-            strokeDashoffset='800'
             fill='none'
             stroke={ topId === 0 ? 'gray' : 'orange'}
             initial={{ pathLength: 0 }}

@@ -103,7 +103,7 @@ const Profiles = () => {
       
       timeoutRef.current = setTimeout(() => {
         setActiveId((activeId + 1) % 3);
-      }, 7000);
+      }, 15000);
     }
 
     if(isClicked === true) {
@@ -134,8 +134,8 @@ const Profiles = () => {
             className='carousel w-[45%] relative' 
             key={profile.id}
             initial={{ opacity: 0 }}
-            animate={ isClicked ? { opacity: 1 } : { opacity: [0, 1, 1, 1, 1, 0] } }
-            transition={ isClicked ? { duration: 3 } : { duration: 7 } }
+            animate={ isClicked ? { opacity: 1 } : { opacity: [0, 1, 1, 1, 1, 1, 1, 1, 0] } }
+            transition={ isClicked ? { duration: 3 } : { duration: 15 } }
           >
 
             <h3 className={`text-2xl font-bold text-[${profile.iconColor}] ml-8 mt-10 mb-4`} id={`heading-${profile.id}`}>
@@ -172,8 +172,8 @@ const Profiles = () => {
               d={pathD}
               strokeWidth="3"
               fill="none"
-              animate={ isClicked ? { pathLength: [0, 1], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] } : { pathLength: [0, 1, 1, 0], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] } }
-              transition={ isClicked ? { duration: 2 } : { duration: 7, repeat: Infinity }}
+              animate={ isClicked ? { pathLength: [0, 1], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] } : { pathLength: [0, 1, 1, 1, 1, 1, 1, 0], stroke: ['#32bef2', '#a66cff', '#d81e5b', '#00c2d1', '#32bef2', '#a66cff', '#d81e5b', '#00c2d1'] } }
+              transition={ isClicked ? { duration: 2 } : { duration: 15, repeat: Infinity }}
             />
           </svg>
 
