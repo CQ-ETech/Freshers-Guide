@@ -180,7 +180,7 @@ const Profiles = () => {
           <section className='flex items-center justify-evenly w-full'>
             <div 
               ref={laptopRef}
-              className={`${activeId === 0 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+              className={`${activeId === 0 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
               id="0"
               onClick={handleClick}
             >
@@ -189,7 +189,7 @@ const Profiles = () => {
             
             <div
               ref={documentRef}
-              className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+              className={`${activeId === 1 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
               id="1"
               onClick={handleClick}
             > 
@@ -198,7 +198,7 @@ const Profiles = () => {
 
             <div
               ref={coreRef}
-              className={`${activeId === 2 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 text-white`}
+              className={`${activeId === 2 ? 'icon-hover' : 'icon'} p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
               id="2"
               onClick={handleClick}
             >
