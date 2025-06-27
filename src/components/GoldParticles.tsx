@@ -1,21 +1,31 @@
 "use client";
-import React from 'react';
+import React, { useRef } from 'react';
 
 export default function GoldParticles() {
+  const particles = useRef(
+    Array.from({ length: 100 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      size: `${Math.random() * 4 + 2}px`,
+      delay: `-${Math.random() * 20}s`,
+      duration: `${20 + Math.random() * 20}s`,
+      opacity: `${0.3 + Math.random() * 0.5}`,
+    }))
+  );
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden z-[2] pointer-events-none">
       <div className="gold-particles w-full h-full">
-        {Array.from({ length: 100 }).map((_, index) => (
+        {particles.current.map((p, index) => (
           <div
             key={index}
             className="gold-particle"
             style={{
-              '--left': `${Math.random() * 100}%`,
-              '--top': `${Math.random() * 100}%`,
-              '--size': `${Math.random() * 4 + 2}px`,
-              '--delay': `-${Math.random() * 20}s`,
-              '--duration': `${20 + Math.random() * 20}s`,
-              '--opacity': `${0.3 + Math.random() * 0.5}`,
+              '--left': p.left,
+              '--top': p.top,
+              '--size': p.size,
+              '--delay': p.delay,
+              '--duration': p.duration,
+              '--opacity': p.opacity,
             } as React.CSSProperties}
           />
         ))}

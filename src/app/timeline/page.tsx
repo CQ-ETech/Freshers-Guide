@@ -259,14 +259,12 @@ export default function Timeline() {
   return (
     <div className="min-h-screen bg-[#181818] text-[#FFF8E4] py-12 px-6 relative">
       {/* Background elements */}
-      <div className="fixed inset-0 bg-[url('/pexels-pixabay-235992.jpg')] opacity-5 bg-cover bg-center mix-blend-overlay pointer-events-none z-[1]"></div>
-      <div className="fixed inset-0 bg-gradient-to-t from-[#181818] via-[#181818]/50 to-[#181818] pointer-events-none z-[1]"></div>
-      
-      {/* Gold particles background */}
+      <div className="fixed inset-0 bg-[url('/pexels-pixabay-235992.jpg')] opacity-5 bg-cover bg-center pointer-events-none z-[1]"></div>
+      <div className="fixed inset-0 bg-gradient-to-t from-[#181818] via-[#181818]/50 to-[#181818] pointer-events-none z-[2]"></div>
       <GoldParticles />
 
       {/* Content */}
-      <div className="relative z-[3]">
+      <div className="relative z-[4]">
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center px-2 sm:px-4 py-24 text-center w-full max-w-4xl mx-auto animate-fade-in min-h-[40vh] mb-16">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] py-4">
