@@ -87,7 +87,7 @@ const timelineData = [
     details: [
       "Use this time to become proficient in a particular skill.",
       "Work on personal projects.",
-      "Make you resume and Consider internships or research opportunities."
+      "Make your resume and consider applying for internships or research opportunities."
     ]
   },
   {
@@ -267,13 +267,13 @@ export default function Timeline() {
       <div className="relative z-[4]">
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center px-2 sm:px-4 py-24 text-center w-full max-w-4xl mx-auto animate-fade-in min-h-[40vh] mb-16">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] py-4">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] py-4 font-comfortaa">
             Your College Timeline
           </h1>
-          <p className="text-lg md:text-2xl text-[#FFF8E4] mb-2 font-medium max-w-2xl mx-auto">
+          <p className="text-lg md:text-2xl text-[#FFF8E4] mb-2 font-medium max-w-2xl mx-auto font-comfortaa">
             See your journey at IIT Kharagpur, semester by semester.
           </p>
-          <p className="text-base text-[#FFF8E4]/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-base text-[#FFF8E4]/80 mb-8 max-w-2xl mx-auto font-comfortaa">
             From orientation to placements, track your progress and plan ahead for every phase of your undergraduate life.
           </p>
         </section>
@@ -333,9 +333,9 @@ export default function Timeline() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#FFBB00]/10 via-transparent to-[#FFEA00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               
               <div className="flex-shrink-0 flex flex-col items-center md:items-start w-56 md:w-72 relative z-10 transform transition-transform duration-500 group-hover:translate-x-2">
-                <h2 className="text-4xl font-bold mb-3 text-[#FFBB00] group-hover:text-[#FFEA00] transition-colors duration-300 group-hover:scale-105 transform">{item.title}</h2>
-                <p className="text-xl text-[#FFEA00] mb-3 opacity-90 group-hover:opacity-100 transition-all duration-300">{item.months}</p>
-                <p className="text-lg text-[#FFF8E4] font-medium mb-3 group-hover:text-[#FFEA00]/90 transition-colors duration-300">{item.note}</p>
+                <h2 className="text-4xl font-bold mb-3 text-[#FFBB00] group-hover:text-[#FFEA00] transition-colors duration-300 group-hover:scale-105 transform font-comfortaa">{item.title}</h2>
+                <p className="text-xl text-[#FFEA00] mb-3 opacity-90 group-hover:opacity-100 transition-all duration-300 font-comfortaa">{item.months}</p>
+                <p className="text-lg text-[#FFF8E4] font-medium mb-3 group-hover:text-[#FFEA00]/90 transition-colors duration-300 font-comfortaa">{item.note}</p>
               </div>
               <div className="flex-1 text-left relative z-10 transform transition-all duration-500 group-hover:translate-x-3">
                 <ul className="list-disc pl-8 space-y-4 text-xl text-[#FFF8E4]/90">
@@ -345,7 +345,7 @@ export default function Timeline() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: visible === index ? 1 : 0.7, x: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="group-hover:text-[#FFF8E4] transition-colors duration-300 group-hover:translate-x-1 transform"
+                      className="group-hover:text-[#FFF8E4] transition-colors duration-300 group-hover:translate-x-1 transform font-comfortaa"
                     >
                       {d}
                     </motion.li>

@@ -82,7 +82,7 @@ const Carousel = ({ data }: CarouselProps) => {
   return ( 
     <div className="carousel text-center jusitfy-center pt-10 pb-[100px]">
       <div className="main-carousel flex justify-center">
-        <section className='flex w-[70vw] h-[600px] items-center overflow-hidden relative'>
+        <section className='flex w-[65vw] h-[500px] items-center overflow-hidden relative'>
           {data.map((profile) => (
             topId === profile.id &&
             <Image
@@ -153,7 +153,7 @@ const Carousel = ({ data }: CarouselProps) => {
       </div>
 
       <div className={`carousel-navigation cursor-pointer flex flex-wrap justify-center`}>
-        <div className='w-[70vw] flex justify-center'>
+        <div className='w-[65vw] flex justify-center'>
           {data.map((profile) => (
             <motion.div 
               className={`navigator h-[150px] w-[50%] flex flex-col justify-center ${profile.navCol} text-2xl font-extrabold active:underline`}
@@ -168,9 +168,9 @@ const Carousel = ({ data }: CarouselProps) => {
             </motion.div>
           ))}
         </div>
-        <svg height='2px' width='70vw'>
+        <svg height='2px' width='65vw'>
           <motion.path 
-            d={`M ${window.innerWidth * 0.7 * topId / data.length} 2 L ${window.innerWidth * 0.7 * (topId + 1) / data.length} 2`}
+            d={`M ${window.innerWidth * 0.65 * topId / data.length} 2 L ${window.innerWidth * 0.65 * (topId + 1) / data.length} 2`}
             strokeWidth='8'
             fill='none'
             stroke={ data[topId].strokeColor }

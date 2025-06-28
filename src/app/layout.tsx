@@ -7,7 +7,7 @@ import Image from 'next/image';
 import GoldParticles from '../components/GoldParticles';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
-const inter = Comfortaa({ subsets: ['latin'] });
+const comfortaa = Comfortaa({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Summer Guide',
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={
-        `${inter.className} min-h-screen relative overflow-x-hidden animate-gradient-move bg-[#181818]`
+        `${comfortaa.className} min-h-screen relative overflow-x-hidden animate-gradient-move bg-[#181818]`
       }>
         <GoldParticles />
         <nav className="bg-[#181818]/95 text-[#FFBB00] p-4 shadow-2xl fixed top-0 left-0 right-0 z-50 w-full rounded-none border-b border-[#FFD600]/40">
