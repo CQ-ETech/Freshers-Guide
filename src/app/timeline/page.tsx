@@ -87,7 +87,7 @@ const timelineData = [
     details: [
       "Use this time to become proficient in a particular skill.",
       "Work on personal projects.",
-      "Consider internships or research opportunities."
+      "Make you resume and Consider internships or research opportunities."
     ]
   },
   {
