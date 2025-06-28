@@ -6,6 +6,7 @@ import Footer from '../components/footer/page';
 import Image from 'next/image';
 import GoldParticles from '../components/GoldParticles';
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import LOGO from '../../public/LOGO.png';
 
 const comfortaa = Comfortaa({ subsets: ['latin'] });
 
@@ -28,7 +29,7 @@ export default function RootLayout({
         <nav className="bg-[#181818]/95 text-[#FFBB00] p-4 shadow-2xl fixed top-0 left-0 right-0 z-50 w-full rounded-none border-b border-[#FFD600]/40">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-4">
-              <Image src="/android-chrome-192x192.png" alt="CQ Logo" width={50} height={50} className="bg-white rounded-full p-1 shadow-lg" />
+              <Image src="/LOGO.png" alt="CQ Logo" width={50} height={50} className="rounded-full p-1 shadow-lg" />
               <span className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#FFEA00] via-[#FFEA00] to-[#FFBB00] drop-shadow-lg transition duration-300">
                 Freshers Guide
               </span>
