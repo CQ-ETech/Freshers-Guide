@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import LOGO from '../../public/LOGO.png' // Adjust the path as necessary
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -27,7 +28,7 @@ const Navbar = () => {
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-r from-amber-500 to-orange-500 p-0.5">
                 <div className="w-full h-full rounded-xl bg-amber-50 flex items-center justify-center">
-                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">FG</span>
+                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500"><Image src={LOGO} alt="CQ LOGO" /></span>
                 </div>
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600 group-hover:from-amber-500 group-hover:to-orange-500 transition-all duration-300">
