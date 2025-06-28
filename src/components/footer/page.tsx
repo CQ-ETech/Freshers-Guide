@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#181818] text-white py-16 border-t-2 border-[#FFD600]/40 shadow-2xl relative z-[20] before:content-[''] before:absolute before:inset-0 before:bg-[#181818] before:z-[-1]">
-      <div className="relative z-[2] max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 bg-[#181818]">
+    <footer className="bg-none text-white py-16 border-t-2 border-[#FFD600]/40 shadow-2xl relative z-[20] before:content-[''] before:absolute before:inset-0 before:bg-none before:z-[-1]">
+      <div className="relative z-[2] max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 bg-none">
         {/* About Section */}
         <div className="flex flex-col items-start space-y-4 md:col-span-2">
           <div className="flex items-center space-x-3 mb-2">
