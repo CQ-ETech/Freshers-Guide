@@ -1,17 +1,18 @@
 import { FaEnvelope, FaPhone, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { SiMedium } from 'react-icons/si';
 import Image from 'next/image';
+import LOGO from './../../public/LOGO.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#181818] text-white py-16 border-t-2 border-[#FFD600]/40 shadow-2xl relative z-[20] before:content-[''] before:absolute before:inset-0 before:bg-[#181818] before:z-[-1]">
+    <footer className="bg-[#181818] text-white py-16 border-t-2 border-[#FFD600]/40 shadow-2xl relative z-[20] before:content-[''] before:absolute before:inset-0 before:bg-transparent before:z-[-1]">
       <div className="relative z-[2] max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 bg-[#181818]">
         {/* About Section */}
         <div className="flex flex-col items-start space-y-4 md:col-span-2">
           <div className="flex items-center space-x-3 mb-2">
-            <Image src="/android-chrome-192x192.png" alt="CQ Logo" width={60} height={60} className="bg-white rounded-full p-1 shadow-lg" />
+            <Image src="/LOGO.png" alt="CQ Logo" width={90} height={90} className="rounded-full p-1 shadow-lg" />
             <h2 className="text-4xl font-extrabold text-[#FFD600]">
-              Freshers Guide
+              COMMUNIQUÉ
             </h2>
           </div>
           <p className="text-base leading-relaxed text-[#FFF8E4]">
