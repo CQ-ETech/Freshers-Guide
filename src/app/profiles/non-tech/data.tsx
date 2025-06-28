@@ -12,7 +12,7 @@ export const data = [
     textCol: 'text-gray-200',
     navCol: 'text-[#736146]',
     strokeColor: '#736146',
-    href: '/profiles/non-tech/Consult',
+    href: '/profiles/non-tech/consult',
     id: 0
   },
   {
@@ -36,7 +36,7 @@ export const data = [
     textCol: 'text-gray-200',
     navCol: 'text-[#e5cdb1]',
     strokeColor: '#e5cdb1',
-    href: '/profiles/non-tech/Product',
+    href: '/profiles/non-tech/product',
     id: 2
   },
 ]
