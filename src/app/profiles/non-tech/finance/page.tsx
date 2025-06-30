@@ -2,8 +2,14 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaChartPie, FaSearchDollar, FaBullhorn, FaBalanceScale, FaBriefcase } from 'react-icons/fa';
-import { MdOutlineStart, MdOutlineTrendingUp, MdOutlineCalculate, MdOutlineChecklist, MdOutlineSchool, MdOutlineWorkOutline, MdOutlineVerified, MdOutlineShare } from 'react-icons/md';
+import {
+  FaChartPie, FaSearchDollar, FaBullhorn,
+  FaBalanceScale, FaBriefcase
+} from 'react-icons/fa';
+import {
+  MdOutlineStart, MdOutlineTrendingUp, MdOutlineCalculate, MdOutlineChecklist,
+  MdOutlineSchool, MdOutlineWorkOutline, MdOutlineVerified, MdOutlineShare
+} from 'react-icons/md';
 
 const steps = [
   { stage: 'Start', heading: 'Basics of Finance', desc: 'Begin your finance journey by building a strong foundation in key areas like accounting principles, economic fundamentals, and basic finance concepts that govern business decisions.', icon: <MdOutlineStart size={24} />, color: 'cyan' },
@@ -25,11 +31,11 @@ const opportunities = [
 ];
 
 const tips = [
-  'Follow financial news regularly to build awareness.',
-  'Analyze company balance sheets and statements.',
-  'Connect with finance professionals on LinkedIn.',
-  'Maintain your own investment or expense tracker.',
-  'Update your resume with every project or course.',
+  'Stay updated with financial news through platforms like Bloomberg or Mint, and set daily reading habits to build market awareness.',
+  'Practice analyzing real company financial statements using annual reports; focus on revenue streams, liabilities, and ratios.',
+  'Build your LinkedIn presence—share insights, follow finance professionals, and engage in finance-related conversations to grow your network.',
+  'Create a habit of tracking your own expenses or mock investments using tools like Google Sheets or apps like Zerodha Coin.',
+  'Maintain a dynamic resume or personal website that highlights your certifications, finance projects, and learning milestones.',
 ];
 
 export default function RoadmapPlanning() {
@@ -58,6 +64,7 @@ export default function RoadmapPlanning() {
         </motion.div>
       </section>
 
+      {/* Roadmap: Your original code restored */}
       <section className="relative max-w-6xl mx-auto">
         <div className="relative flex flex-col items-center">
           <div className="absolute h-full w-1 bg-gradient-to-b from-cyan-400 via-rose-400 to-purple-500 left-1/2 transform -translate-x-1/2 z-0"></div>
@@ -94,31 +101,32 @@ export default function RoadmapPlanning() {
         </div>
       </section>
 
+      {/* Explore Opportunities */}
       <section className="relative z-10 max-w-7xl mx-auto mt-32 px-4">
         <h2 className="text-4xl text-yellow-400 font-extrabold text-center mb-16 drop-shadow-md">
           Explore Your Opportunities
         </h2>
         <div className="flex flex-wrap justify-center gap-10">
           {opportunities.map((opp, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{
-                scale: 1.1,
-                boxShadow: '0 0 30px rgba(255, 193, 7, 0.6)',
-                borderRadius: '1rem',
-                padding: '1.5rem'
-              }}
-              transition={{ duration: 0.4 }}
-              className="text-yellow-100 flex flex-col items-center max-w-xs text-center"
-            >
-              <div className="mb-3 text-yellow-500">{opp.icon}</div>
-              <h3 className="text-lg font-extrabold text-yellow-50 mb-1">{opp.title}</h3>
-              <p className="text-sm text-yellow-300">{opp.detail}</p>
-            </motion.div>
+            <div key={idx} className="w-72 transform-gpu">
+              <motion.div
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: '0 0 30px rgba(255, 193, 7, 0.6)',
+                }}
+                transition={{ duration: 0.4 }}
+                className="text-yellow-100 flex flex-col items-center text-center bg-zinc-900 p-6 rounded-xl shadow-lg will-change-transform"
+              >
+                <div className="mb-3 text-yellow-500">{opp.icon}</div>
+                <h3 className="text-lg font-extrabold text-yellow-50 mb-1">{opp.title}</h3>
+                <p className="text-sm text-yellow-300">{opp.detail}</p>
+              </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
+      {/* Tips & Tricks */}
       <section className="relative z-10 max-w-5xl mx-auto mt-32 px-4">
         <h2 className="text-4xl text-yellow-400 font-extrabold text-center mb-12 drop-shadow-md">
           Tips & Tricks

@@ -6,30 +6,30 @@ import { FaUserTie, FaRegLightbulb, FaHandshake, FaTools, FaComments } from 'rea
 import { MdOutlineStart, MdOutlineSchool, MdOutlineChecklist, MdOutlineVerified, MdOutlineWorkOutline, MdOutlineShare } from 'react-icons/md';
 
 const steps = [
-  { stage: 'Start', heading: 'Understand the Industry', desc: 'Get a clear view of different consultancy fields like management, strategy, IT, or HR.', icon: <MdOutlineStart size={24} />, color: 'cyan' },
-  { stage: 'Explore', heading: 'Build Domain Knowledge', desc: 'Deep dive into specific industries such as healthcare, finance, or technology.', icon: <MdOutlineSchool size={24} />, color: 'amber' },
-  { stage: 'Skills', heading: 'Develop Communication Skills', desc: 'Focus on presentations, storytelling, and client interaction techniques.', icon: <MdOutlineChecklist size={24} />, color: 'rose' },
-  { stage: 'Frameworks', heading: 'Learn Frameworks & Tools', desc: 'Master consulting frameworks (like SWOT, 5 Forces) and tools (Excel, PowerPoint).', icon: <MdOutlineChecklist size={24} />, color: 'blue' },
-  { stage: 'Practice', heading: 'Case Practice', desc: 'Practice business case studies and mock interviews extensively.', icon: <MdOutlineWorkOutline size={24} />, color: 'emerald' },
-  { stage: 'Network', heading: 'Networking & Mentorship', desc: 'Connect with consultants, alumni, and join consulting clubs.', icon: <MdOutlineChecklist size={24} />, color: 'green' },
-  { stage: 'Certify', heading: 'Certifications & Courses', desc: 'Take up courses on consulting skills and industry-specific insights.', icon: <MdOutlineVerified size={24} />, color: 'yellow' },
-  { stage: 'Showcase', heading: 'Showcase Expertise', desc: 'Write articles, publish analysis, or share insights on LinkedIn or blogs.', icon: <MdOutlineShare size={24} />, color: 'purple' },
+  { stage: 'Start', heading: 'Understand the Industry Landscape', desc: 'Begin by exploring various consulting branches like management, strategy, IT, and HR. Read reports by top consulting firms and learn about real-world consulting engagements.', icon: <MdOutlineStart size={24} />, color: 'cyan' },
+  { stage: 'Explore', heading: 'Build Domain Expertise', desc: 'Identify industries of interest—like healthcare, tech, or energy—and deep dive into business models, market trends, and major players to gain a consultant’s perspective.', icon: <MdOutlineSchool size={24} />, color: 'amber' },
+  { stage: 'Skills', heading: 'Develop Soft & Communication Skills', desc: 'Consultants must communicate ideas clearly. Practice public speaking, storytelling, slide-making, and structured problem-solving to convey strategic recommendations effectively.', icon: <MdOutlineChecklist size={24} />, color: 'rose' },
+  { stage: 'Frameworks', heading: 'Master Frameworks & Tools', desc: 'Learn structured frameworks like SWOT, 5 Forces, BCG Matrix, and tools like Excel, PowerPoint, Notion, and Miro to structure and visualize your analysis.', icon: <MdOutlineChecklist size={24} />, color: 'blue' },
+  { stage: 'Practice', heading: 'Crack Consulting Cases', desc: 'Engage in mock case interviews with peers. Use resources like Case in Point, Victor Cheng, and PrepLounge to simulate real consulting problems.', icon: <MdOutlineWorkOutline size={24} />, color: 'emerald' },
+  { stage: 'Network', heading: 'Find Mentors & Connect', desc: 'Reach out to alumni in consulting, join LinkedIn communities, and attend virtual events or consulting club meets to understand recruitment and culture.', icon: <MdOutlineChecklist size={24} />, color: 'green' },
+  { stage: 'Certify', heading: 'Certifications & Learning', desc: 'Pursue consulting-oriented courses like Coursera’s "Business Strategy", or certifications in project management, analytics, or digital transformation.', icon: <MdOutlineVerified size={24} />, color: 'yellow' },
+  { stage: 'Showcase', heading: 'Build Your Consulting Persona', desc: 'Write blog posts, build a portfolio of solved cases, publish frameworks on LinkedIn, or run a mock consulting project with friends or local businesses.', icon: <MdOutlineShare size={24} />, color: 'purple' },
 ];
 
 const opportunities = [
-  { title: 'Management Consulting', detail: 'Work on improving organizational efficiency and strategy.', icon: <FaUserTie size={32} /> },
-  { title: 'IT Consulting', detail: 'Advise firms on digital transformation, software solutions, and technology upgrades.', icon: <FaTools size={32} /> },
-  { title: 'Strategy Consulting', detail: 'Guide businesses in long-term planning and competitive positioning.', icon: <FaRegLightbulb size={32} /> },
-  { title: 'HR Consulting', detail: 'Support companies in optimizing human resources and talent strategies.', icon: <FaHandshake size={32} /> },
-  { title: 'Freelance Consulting', detail: 'Offer independent advice to startups and SMEs on various domains.', icon: <FaComments size={32} /> },
+  { title: 'Management Consulting', detail: 'Engage with companies to redesign workflows, enter new markets, or improve profitability. Often involves travel and client interaction.', icon: <FaUserTie size={32} /> },
+  { title: 'IT Consulting', detail: 'Focus on implementing and advising on tech systems—cloud, cybersecurity, ERP—working closely with tech and operations teams.', icon: <FaTools size={32} /> },
+  { title: 'Strategy Consulting', detail: 'Offer long-term advisory on mergers, market entry, or corporate strategy. Requires deep research, quantitative skills, and industry knowledge.', icon: <FaRegLightbulb size={32} /> },
+  { title: 'HR Consulting', detail: 'Help firms with workforce planning, change management, performance evaluations, or learning and development programs.', icon: <FaHandshake size={32} /> },
+  { title: 'Freelance Consulting', detail: 'As a freelancer, assist startups or NGOs in solving specific business problems or building their strategic roadmap with independence and flexibility.', icon: <FaComments size={32} /> },
 ];
 
 const tips = [
-  'Follow top consulting firms and read their case studies.',
-  'Practice case cracking with peers regularly.',
-  'Tailor your resume with measurable consulting experiences.',
-  'Develop a clear personal pitch and project stories.',
-  'Stay updated on industry trends and economic news.'
+  'Read consulting blogs by Bain, McKinsey, and BCG regularly. Understanding how consultants structure thoughts is as important as frameworks.',
+  'Form a case group with peers and practice at least 2–3 cases per week. Record and review for structured thinking and time management.',
+  'Build a resume tailored for consulting—quantify your achievements, highlight leadership and analytical experiences, and use action verbs.',
+  'Prepare for fit interviews by crafting stories using the STAR method. Showcase leadership, failure recovery, and teamwork scenarios.',
+  'Stay informed on global economics, major business moves, and sector news to reference real examples in interviews and case structures.'
 ];
 
 export default function RoadmapPlanning() {
@@ -58,6 +58,7 @@ export default function RoadmapPlanning() {
         </motion.div>
       </section>
 
+      {/* Roadmap section */}
       <section className="relative max-w-6xl mx-auto">
         <div className="relative flex flex-col items-center">
           <div className="absolute h-full w-1 bg-gradient-to-b from-cyan-400 via-rose-400 to-purple-500 left-1/2 transform -translate-x-1/2 z-0"></div>
@@ -94,31 +95,34 @@ export default function RoadmapPlanning() {
         </div>
       </section>
 
+      {/* Opportunities */}
       <section className="relative z-10 max-w-7xl mx-auto mt-32 px-4">
         <h2 className="text-4xl text-yellow-400 font-extrabold text-center mb-16 drop-shadow-md">
           Explore Your Opportunities
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="flex flex-wrap justify-center gap-10">
           {opportunities.map((opp, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 221, 51, 0.6)' }}
-              transition={{ duration: 0.4 }}
-              className="text-white flex flex-col items-center text-center"
-            >
-              <div className="mb-3 text-yellow-300">{opp.icon}</div>
-              <h3 className="text-lg font-extrabold text-yellow-200 mb-1">{opp.title}</h3>
-              <p className="text-sm text-gray-300 max-w-xs">{opp.detail}</p>
-            </motion.div>
+            <div key={idx} className="w-72 transform-gpu">
+              <motion.div
+                whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(255, 193, 7, 0.6)' }}
+                transition={{ duration: 0.4 }}
+                className="text-yellow-100 flex flex-col items-center text-center bg-zinc-900 p-6 rounded-xl shadow-lg will-change-transform"
+              >
+                <div className="mb-3 text-yellow-500">{opp.icon}</div>
+                <h3 className="text-lg font-extrabold text-yellow-50 mb-1">{opp.title}</h3>
+                <p className="text-sm text-yellow-300">{opp.detail}</p>
+              </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
+      {/* Tips & Tricks */}
       <section className="relative z-10 max-w-5xl mx-auto mt-32 px-4">
         <h2 className="text-4xl text-yellow-400 font-extrabold text-center mb-12 drop-shadow-md">
           Tips & Tricks
         </h2>
-        <ul className="list-disc list-inside space-y-4 text-yellow-100 text-lg">
+        <ul className="list-disc list-inside space-y-4 text-yellow-300 text-lg">
           {tips.map((tip, idx) => (
             <motion.li
               key={idx}
@@ -132,6 +136,15 @@ export default function RoadmapPlanning() {
           ))}
         </ul>
       </section>
+
+      <footer className="relative z-10 text-center mt-32">
+        <a
+          href="#"
+          className="inline-block bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-yellow-600 hover:scale-105 transition"
+        >
+          ← Back to Dashboard
+        </a>
+      </footer>
     </main>
   );
 }
