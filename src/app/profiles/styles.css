@@ -1,8 +1,3 @@
-.animation {
-  border: dashed rgb(44, 44, 44);
-  border-width: 0px 1px 0px 1px;
-}
-
 #link-0, #heading-0 {
   color: #32bef2;
 }
@@ -13,45 +8,4 @@
 
 #link-2, #heading-2 {
   color: #d58936;
-}
-
-.carousel h1 {
-  line-height: 65px;
-}
-
-.carousel h4 {
-  line-height: 28px;
-}
-
-.icon {
-  border: 1px solid #e2f8fa;
-  transition: transform 0.25s ease, border 0.1s ease, box-shadow 0.25s ease;
-  transform: scale(1);
-}
-
-.icon:hover {
-  transform: scale(1.1);
-  border: none;
-  background-color: #ffea00;
-  box-shadow:0px 1px 25px -5px #fff176;
-  color: #292929;
-}
-
-.icon:active {
-  transform: scale(0.9);
-  box-shadow: 0px 1px 20px -4px #fff176;
-}
-
-.icon-hover {
-  transform: scale(1.1);
-  border: none;
-  background-color: #ffea00;
-  box-shadow:0px 1px 25px -5px #fff176;
-  color: #292929;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.icon-hover:active {
-  transform: scale(0.9);
-  box-shadow: 0px 1px 20px -4px #fff176;
 }

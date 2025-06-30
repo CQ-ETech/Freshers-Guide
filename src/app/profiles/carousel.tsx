@@ -81,7 +81,7 @@ const Carousel = ({ data }: CarouselProps) => {
 
   return ( 
     <div className="carousel text-center jusitfy-center pt-10 pb-[100px]">
-      <div className="main-carousel flex justify-center">
+      <div className="main-carousel flex justify-center mt-0 mb-0">
         <section className='flex w-[65vw] h-[500px] items-center overflow-hidden relative'>
           {data.map((profile) => (
             topId === profile.id &&
@@ -156,7 +156,7 @@ const Carousel = ({ data }: CarouselProps) => {
         <div className='w-[65vw] flex justify-center'>
           {data.map((profile) => (
             <motion.div 
-              className={`navigator h-[150px] w-[50%] flex flex-col justify-center ${profile.navCol} text-2xl font-extrabold active:underline`}
+              className={`navigator h-[150px] w-[50%] flex flex-col justify-center ${profile.navCol} text-2xl font-extrabold active:underline border-[1px]`}
               onClick={handleClick}
               key={profile.id}
               id={`${profile.id}`}
