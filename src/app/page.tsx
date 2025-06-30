@@ -104,7 +104,7 @@ export default function Home() {
         <p className="text-base text-[#FFF8E4]/80 mb-8 max-w-2xl mx-auto font-comfortaa">
           From orientation to placements, track your progress and plan ahead for every phase of your undergraduate life.
         </p>
-        <Link href="/profiles" className="inline-block px-8 py-3 bg-[#FFD600] text-[#181818] font-semibold rounded-full shadow-lg hover:bg-[#FFB300] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#FFD600]/40 transition-all duration-300 text-lg tracking-wide mt-4 border border-[#FFB300]/60 font-comfortaa">
+        <Link href="/profiles" className="inline-block px-8 py-3 bg-[#FFD600] text-[#181818] font-semibold rounded-lg shadow-lg hover:bg-[#FFB300] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#FFD600]/40 transition-all duration-300 text-lg tracking-wide mt-4 border border-[#FFB300]/60 font-comfortaa">
           Explore Profiles
         </Link>
       </section>
