@@ -70,6 +70,14 @@ export default function RootLayout({
           {children}
           <ScrollToTopButton />
         </main>
+         <div className="w-full flex justify-center my-8">
+          <a
+            href="/resources"
+            className="inline-block bg-[#FFD600] text-[#181818] font-semibold px-6 py-3 rounded-lg shadow hover:bg-[#FFBB00] transition relative z-[10]"
+          >
+          Resources
+          </a>
+          </div>
         <Footer />
       </body>
     </html>
