@@ -63,6 +63,13 @@ export default function RootLayout({
                 Resources
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#FFEA00] transition-all duration-300 group-hover:w-full"></span>
               </Link>
+              <Link
+                href="/about-us"
+                className={`relative group font-semibold px-2 py-1 text-xl transition duration-300 ${typeof window !== 'undefined' && window.location.pathname === '/about us' ? 'bg-[#FFEA00] text-[#181818] rounded shadow-lg' : 'text-[#FFEA00] hover:text-[#FFBB00]'}`}
+              >
+                About Us
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#FFEA00] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
             </div>
           </div>
         </nav>
