@@ -168,7 +168,7 @@ const Carousel = ({ data }: CarouselProps) => {
             </motion.div>
           ))}
         </div>
-        <svg height='2px' width='65vw'>
+        <svg height='4px' width='65vw'>
           <motion.path 
             d={`M ${window.innerWidth * 0.65 * topId / data.length} 2 L ${window.innerWidth * 0.65 * (topId + 1) / data.length} 2`}
             strokeWidth='8'

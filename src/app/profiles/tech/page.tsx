@@ -36,8 +36,8 @@ const data = [
 
 const Tech = () => {
   return ( 
-    <div className='bg-black mb-[-20px]'>
-      <section className="hero mt-[-10px] pt-5 min-h-screen w-full flex justify-between relative bg-[#000000]">
+    <div className='mb-[-20px]'>
+      <section className="bg-black hero mt-[-10px] pt-5 min-h-screen w-full flex justify-between relative bg-[#000000]">
         <div className={`hero-text mt-20 w-[60%] min-h-screen overflow-hidden pl-[12vw]`}>
           <motion.h1 
             className="text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-[5rem]"

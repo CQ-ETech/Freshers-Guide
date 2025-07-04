@@ -72,11 +72,75 @@ const generals = [
   },
 ];
 
+const steps = [
+  {
+    name: "Step 1: Learn python fundamentals",
+    content: [
+      "Variables, data types (int, float, str, bool)",
+      "Lists, tuples, dictionaries, sets",
+      "Conditionals (if, else, elif)",
+      "Loops (for, while)",
+      "Functions",
+      "Exception handling",
+      "Basic I/O (file reading, writing)"
+    ],
+    id: 0
+  },
+  {
+    name: "Step 2: Intermediate python + key libraries",
+    content: [
+      "List comprehensions",
+      "Lambda functions",
+      "Object-Oriented Programming (OOP)",
+      "Working with CSVs, JSON, Excel",
+      "Data cleaning and preprocessing",
+      "Key libraries - numPy, Pandas, Matplotlib/Seaborn, Scikit-learn",
+      "Do small data analysis projects"
+    ],
+    id: 1
+  },
+  {
+    name: "Step 3: Statistics, math and data science foundation",
+    content: [
+      "Descriptive stats: mean, median, mode, variance, std dev",
+      "Probability: basics, distributions",
+      "Linear algebra: vectors, matrices, dot product",
+      "Calculus: gradients (just basics!)",
+      "Data distributions, skewness, kurtosis",
+      "Correlation vs causation"
+    ],
+    id: 2
+  },
+  {
+    name: "Step 4: Maching learning with python",
+    content: [
+      "Supervised learning: Regression (Linear, Lasso, Ridge), Classification (KNN, SVM, Logistic Regression, Decision Trees)",
+      "Unsupervised learning: Clustering (KMeans, DBSCAN), Dimensionality reduction (PCA, t-SNE)",
+      "Model Evaluation (accuracy, precision, recall, F1, ROC)",
+      "Key Libraries - Scikit-learn, XGBoost, joblib",
+      "Do projects - predict housing prices, classify handwritten digits, sentiment analysis"
+    ],
+    id: 3
+  },
+  {
+    name: "Step 5: Deep learning and AI",
+    content: [
+      "TensorFlow or PyTorch (choose one, PyTorch is more beginner friendly",
+      "Neural network basics (activation functions, forward pass, backpropagation)",
+      "CNNs (for images)",
+      "RNNs / LSTMs (for sequences like time series or text)",
+      "Transformers & Attention (basics only — use high-level libs)",
+      "Afterwards, do projects - movie recommendation system, object detection system, etc."
+    ],
+    id: 4
+  }
+]
+
 export default function DataProfile() {
   return (
     <div className='text-center min-h-screen text-white py-10 px-6'>
       <h1 className="text-6xl font-bold h-[200px] m-10 text-center text-[#ffd700]">Data Profile</h1>
-      <TechLayout generals={generals} />
+      <TechLayout generals={generals} steps={steps} />
       <div className="mt-8 text-left">
         <Link href="/profiles/tech" className="text-yellow-300 underline hover:no-underline">
           ← Back to Tech

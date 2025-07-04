@@ -45,7 +45,7 @@ const TechLayout = ({ generals, steps }: techLayout) => {
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.25 * (index + 1) }}
+                      transition={{ duration: 0.5, delay: 0.15 * (index + 1) }}
                     >
                       {points}
                     </motion.li>
@@ -78,7 +78,7 @@ const TechLayout = ({ generals, steps }: techLayout) => {
             <section className='flex justify-evenly flex-wrap'>
               {steps && steps.map((step) => (
                 <motion.section 
-                  className='w-[30%] shrink-0 border-2 rounded-lg p-6 bg-gray/30 backdrop-blur-md border border-white/10 text-white rounded-xl shadow-xl relative'
+                  className={`w-[${(steps.length % 3 !== 0 && (step.id === (steps.length - 2) || step.id === (steps.length - 1))) ? 45 : 30}%] shrink-0 border-2 rounded-lg mt-6 mb-6 p-6 bg-gray/30 backdrop-blur-md border border-white/10 text-white rounded-xl shadow-xl relative`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -100,7 +100,7 @@ const TechLayout = ({ generals, steps }: techLayout) => {
                         className='pb-4'
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: [0, 0, 1] }}
-                        transition={{ duration: 0.5, delay: 0.5 + 0.25 * (index + 1) }}
+                        transition={{ duration: 0.5, delay: 0.5 + 0.15 * (index + 1) }}
                         viewport={{ once: true }}
                       >
                         {point}
