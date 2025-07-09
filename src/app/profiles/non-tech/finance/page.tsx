@@ -44,7 +44,7 @@ export default function RoadmapPlanning() {
   }, []);
 
   return (
-    <main className="relative bg-black text-yellow-100 min-h-screen py-24 px-4 sm:px-12 overflow-hidden">
+    <main className="relative bg-transparent text-yellow-100 min-h-screen py-24 px-4 sm:px-12 overflow-hidden">
       <section className="text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: -40 }}
@@ -64,11 +64,10 @@ export default function RoadmapPlanning() {
         </motion.div>
       </section>
 
-      {/* Roadmap: Your original code restored */}
       <section className="relative max-w-6xl mx-auto">
         <div className="relative flex flex-col items-center">
-          <div className="absolute h-full w-1 bg-gradient-to-b from-cyan-400 via-rose-400 to-purple-500 left-1/2 transform -translate-x-1/2 z-0"></div>
-          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-cyan-500 text-white font-bold rounded-full shadow-lg">START</div>
+          <div className="absolute h-full w-1 bg-gradient-to-b from-[#bfa600] via-[#a98f00] to-[#8f7700] left-1/2 transform -translate-x-1/2 z-0"></div>
+          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg">START</div>
 
           {steps.map((step, idx) => (
             <motion.div
@@ -87,7 +86,7 @@ export default function RoadmapPlanning() {
                   whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,255,255,0.6)' }}
                   transition={{ duration: 0.3 }}
                   className={`bg-zinc-900 p-6 rounded-lg shadow-xl border-t-4 transform transition-transform duration-300 ${idx % 2 === 0 ? 'text-left' : 'text-right'}`}
-                  style={{ borderColor: `var(--tw-border-${step.color}-500)` }}
+                  style={{ borderColor: '#bfa600' }}
                 >
                   <p className={`text-${step.color}-400 font-bold text-sm mb-1`}>{step.stage}</p>
                   <h3 className="text-xl font-bold text-yellow-100 mb-2">{step.heading}</h3>
@@ -97,11 +96,10 @@ export default function RoadmapPlanning() {
             </motion.div>
           ))}
 
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-purple-600 text-white font-bold rounded-full shadow-lg">FINISH</div>
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg">FINISH</div>
         </div>
       </section>
 
-      {/* Explore Opportunities */}
       <section className="relative z-10 max-w-7xl mx-auto mt-32 px-4">
         <h2 className="text-4xl text-yellow-400 font-extrabold text-center mb-16 drop-shadow-md">
           Explore Your Opportunities
@@ -126,24 +124,24 @@ export default function RoadmapPlanning() {
         </div>
       </section>
 
-      {/* Tips & Tricks */}
       <section className="relative z-10 max-w-5xl mx-auto mt-32 px-4">
         <h2 className="text-4xl text-yellow-400 font-extrabold text-center mb-12 drop-shadow-md">
           Tips & Tricks
         </h2>
-        <ul className="list-disc list-inside space-y-4 text-yellow-300 text-lg">
+        <div className="grid gap-6 sm:grid-cols-2">
           {tips.map((tip, idx) => (
-            <motion.li
+            <motion.div
               key={idx}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="rounded-xl bg-zinc-900/80 border border-[#bfa600] p-5 text-yellow-300 shadow-md hover:shadow-yellow-500/40 transition-all"
             >
-              {tip}
-            </motion.li>
+              <p className="text-base leading-relaxed">{tip}</p>
+            </motion.div>
           ))}
-        </ul>
+        </div>
       </section>
 
       <footer className="relative z-10 text-center mt-32">
