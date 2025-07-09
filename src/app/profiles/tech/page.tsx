@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg";
-import Carousel from '../carousel';
 import Simple from './assets/ben-kolde-bs2Ba7t69mM-unsplash-edited.jpg';
 import WallE from './assets/ray-rui-SyzQ5aByJnE-unsplash.jpg';
+import dynamic from 'next/dynamic';
+
+const Carousel = dynamic(() => import('../carousel'), { ssr: false });
 
 const data = [
   {
@@ -37,7 +39,7 @@ const data = [
 const Tech = () => {
   return ( 
     <div className='mb-[-20px]'>
-      <section className="bg-black hero mt-[-10px] pt-5 min-h-screen w-full flex justify-between relative bg-[#000000]">
+      <section className="bg-black hero mt-[-10px] pt-5 min-h-screen w-full flex justify-between relative">
         <div className={`hero-text mt-20 w-[60%] min-h-screen overflow-hidden pl-[12vw]`}>
           <motion.h1 
             className="text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-[5rem]"

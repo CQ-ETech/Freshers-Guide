@@ -2,10 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { FaMoneyBillWave, FaHandshake, FaBoxOpen } from "react-icons/fa";
-import Carousel from "../carousel";
+
 import Consult from './assets/consult.jpg';
 import Finance from './assets/finance.jpg';
 import Product from './assets/product.jpg';
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import('../carousel'), { ssr: false });
 
 const data = [
   {
