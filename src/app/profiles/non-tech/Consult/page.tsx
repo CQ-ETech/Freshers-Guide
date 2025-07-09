@@ -143,14 +143,7 @@ export default function RoadmapPlanning() {
 
       </section>
 
-      <footer className="relative z-10 text-center mt-32">
-        <a
-          href="#"
-          className="inline-block bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-yellow-600 hover:scale-105 transition"
-        >
-          ← Back to Dashboard
-        </a>
-      </footer>
+      <footer className="relative z-10 text-center" />
     </main>
   );
 }
