@@ -12,29 +12,32 @@ const data = [
   {
     name: 'Tech',
     heading: 'SDE, Data Science, AI, ML, etc.',
-    description: "Curious how to crack SDE, AI, or Data Science roles from IIT KGP? Here's your no-nonsense prep roadmap - start with DSA (think arrays to DP in 3-4 months), master core CS (OOPs, DBMS, OS, CN), and layer on system design later. This summer? Dive into DSA, hit recursion level in 45 days, and start contests by June 20. With top tech giants like Google and Microsoft hiring on campus, this is your chance to get ahead - click to see how KGPians do it!",
-    icon: <FaCode size='36px' />,
+    description:
+      "Curious how to crack SDE, AI, or Data Science roles from IIT KGP? Here's your no-nonsense prep roadmap - start with DSA (think arrays to DP in 3-4 months), master core CS (OOPs, DBMS, OS, CN), and layer on system design later. This summer? Dive into DSA, hit recursion level in 45 days, and start contests by June 20. With top tech giants like Google and Microsoft hiring on campus, this is your chance to get ahead - click to see how KGPians do it!",
+    icon: <FaCode size="36px" />,
     iconColor: '#32bef2',
     href: '/profiles/tech',
-    id: 0
+    id: 0,
   },
   {
     name: 'Non Tech',
     heading: 'Finance, Consulting, Product Roles',
-    description: "Want to explore Consulting, Product, or Finance roles at IIT KGP but not sure where to start? Whether you're aiming for top consulting firms, dreaming of building innovative products, or diving into high-impact finance roles - this guide has you covered. Get structured prep strategies, CV tips, interview guidance, and roadmap insights tailored for each profile - all campus-specific and completely free. Click to discover how you can start building your journey today.",
-    icon: <Landmark size='36px' />,
+    description:
+      "Want to explore Consulting, Product, or Finance roles at IIT KGP but not sure where to start? Whether you're aiming for top consulting firms, dreaming of building innovative products, or diving into high-impact finance roles - this guide has you covered. Get structured prep strategies, CV tips, interview guidance, and roadmap insights tailored for each profile - all campus-specific and completely free. Click to discover how you can start building your journey today.",
+    icon: <Landmark size="36px" />,
     iconColor: '#a66cff',
     href: '/profiles/non-tech',
-    id: 1
+    id: 1,
   },
   {
     name: 'Core',
     heading: 'Core/FMCG',
-    description: "Curious about Core or FMCG roles at IIT KGP? Whether you're eyeing engineering giants or fast-moving consumer goods companies like Unilever or P&G, this track values strong fundamentals and practical knowledge. Think core subjects, industrial training, relevant software (like AutoCAD, ANSYS, MATLAB), and a proactive approach to problem-solving. Use summers to brush up on concepts, pursue relevant certifications, or get hands-on experience through research or internships. With consistent effort and the right prep strategy, you can unlock some of the most respected and stable career paths offered during internships and placements at KGP.",
-    icon: <Factory size='36px' />,
+    description:
+      "Curious about Core or FMCG roles at IIT KGP? Whether you're eyeing engineering giants or fast-moving consumer goods companies like Unilever or P&G, this track values strong fundamentals and practical knowledge. Think core subjects, industrial training, relevant software (like AutoCAD, ANSYS, MATLAB), and a proactive approach to problem-solving. Use summers to brush up on concepts, pursue relevant certifications, or get hands-on experience through research or internships. With consistent effort and the right prep strategy, you can unlock some of the most respected and stable career paths offered during internships and placements at KGP.",
+    icon: <Factory size="36px" />,
     iconColor: '#d58936',
     href: '/profiles/core',
-    id: 2
+    id: 2,
   },
 ];
 
@@ -46,33 +49,31 @@ const Profiles = () => {
 
   const startRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-  const iconRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
+  const iconRefs = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
 
   const calculatePaths = () => {
-    if (!startRef.current || !svgRef.current || iconRefs.some(ref => !ref.current)) {
-      return;
-    }
+    if (!startRef.current || !svgRef.current || iconRefs.some((ref) => !ref.current)) return;
 
     const svgRect = svgRef.current.getBoundingClientRect();
     const startPos = startRef.current.getBoundingClientRect();
-    
+
     const newPaths = iconRefs.map((endRef, index) => {
       if (!endRef.current) return '';
-
       const endPos = endRef.current.getBoundingClientRect();
 
       const startX = (startPos.left + startPos.width / 2) - svgRect.left;
       const startY = (startPos.top + startPos.height / 2) - svgRect.top;
-      
       const endX = (endPos.left + endPos.width / 2) - svgRect.left;
       const endY = endPos.top - svgRect.top;
-      
+
       if (index === 0 || index === 2) {
-        // Create a path with two right-angle turns, bending lower down.
         const midY = startY + (endY - startY) * 0.75;
         return `M ${startX},${startY} L ${startX},${midY} L ${endX},${midY} L ${endX},${endY}`;
       } else {
-        // Create a straight line for the middle element
         return `M ${startX},${startY} L ${endX},${endY}`;
       }
     });
@@ -88,11 +89,9 @@ const Profiles = () => {
 
   useEffect(() => {
     if (isClicked) return;
-
     timeoutRef.current = setTimeout(() => {
-      setActiveId(currentId => (currentId + 1) % data.length);
+      setActiveId((currentId) => (currentId + 1) % data.length);
     }, 8000);
-
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
@@ -100,96 +99,117 @@ const Profiles = () => {
 
   useEffect(() => {
     setTimeout(calculatePaths, 100);
-    window.addEventListener("resize", calculatePaths);
-    return () => window.removeEventListener("resize", calculatePaths);
+    window.addEventListener('resize', calculatePaths);
+    return () => window.removeEventListener('resize', calculatePaths);
   }, []);
 
-  const activeProfile = data.find(p => p.id === activeId);
+  const activeProfile = data.find((p) => p.id === activeId);
 
-  return ( 
-    <div className="bg-none text-white min-h-screen flex flex-col md:flex-row items-center justify-center p-4 md:p-8 gap-y-12 md:gap-x-8 w-full">
-      <div className='w-full md:w-1/2 lg:w-2/5 relative min-h-[350px] sm:min-h-[400px] md:min-h-[450px] flex flex-col justify-center'>
-        <AnimatePresence mode="wait">
-          {activeProfile && (
-            <motion.section
-              key={activeProfile.id}
-              className='w-full'
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            >
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-center md:text-left" style={{ color: activeProfile.iconColor }}>
-                <span className="inline-block mr-2 align-middle">
-                  {activeProfile.icon}
-                </span>
-                {activeProfile.name}
-              </h3>
+  return (
+    <>
+      <div className="bg-none text-white min-h-screen flex flex-col md:flex-row items-center justify-center p-4 md:p-8 gap-y-12 md:gap-x-8 w-full">
+        <div className="w-full md:w-1/2 lg:w-2/5 relative min-h-[350px] sm:min-h-[400px] md:min-h-[450px] flex flex-col justify-center">
+          <AnimatePresence mode="wait">
+            {activeProfile && (
+              <motion.section
+                key={activeProfile.id}
+                className="w-full"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+              >
+                <h3
+                  className="text-xl sm:text-2xl font-bold mb-4 text-center md:text-left"
+                  style={{ color: activeProfile.iconColor }}
+                >
+                  <span className="inline-block mr-2 align-middle">{activeProfile.icon}</span>
+                  {activeProfile.name}
+                </h3>
 
-              <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 sm:mb-8 leading-tight text-center md:text-left'>
-                {activeProfile.heading}
-              </h1>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 sm:mb-8 leading-tight text-center md:text-left">
+                  {activeProfile.heading}
+                </h1>
 
-              <h4 className='text-base sm:text-lg font-light text-gray-300 leading-relaxed text-center md:text-left'>
-                {activeProfile.description}
-              </h4>
+                <h4 className="text-base sm:text-lg font-light text-gray-300 leading-relaxed text-center md:text-left">
+                  {activeProfile.description}
+                </h4>
 
-              <section className='flex justify-center md:justify-end mt-8'>
-                <Link href={`${activeProfile.href}`} className="underline hover:no-underline text-base sm:text-lg" style={{ color: activeProfile.iconColor }}>
-                  Explore More<ArrowRight className='inline-block ml-1' />
-                </Link>
-              </section>
-            </motion.section>
-          )}
-        </AnimatePresence>
-      </div>
-
-      <section className='w-full md:w-1/2 lg:w-2/5 text-center p-4 flex flex-col items-center justify-between min-h-[400px] md:min-h-[450px]'>
-        <div ref={startRef} className='inline-block scale-100 sm:scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] p-6 sm:p-8 rounded-xl'>
-          <IoPersonOutline size='36px' />
+                <section className="flex justify-center md:justify-end mt-8">
+                  <Link
+                    href={activeProfile.href}
+                    className="underline hover:no-underline text-base sm:text-lg"
+                    style={{ color: activeProfile.iconColor }}
+                  >
+                    Explore More <ArrowRight className="inline-block ml-1" />
+                  </Link>
+                </section>
+              </motion.section>
+            )}
+          </AnimatePresence>
         </div>
 
-        <svg ref={svgRef} width='100%' height='200px' className="my-4" style={{ overflow: 'visible' }}>
-          {paths.map((path, index) => (
-            <motion.path 
-              key={index}
-              d={path}
-              strokeWidth="2.5"
-              fill="none"
-              stroke={data[index].iconColor}
-              initial={{ pathLength: 0 }}
-              animate={{
-                pathLength: activeId === index ? (isClicked ? 1 : [0, 1, 0]) : 0
-              }}
-              transition={{
-                duration: isClicked ? 0.5 : 8,
-                ease: "easeInOut",
-                times: isClicked ? undefined : [0, 0.5, 1]
-              }}
-              style={{
-                filter: `drop-shadow(0 0 8px ${activeId === index ? data[index].iconColor : 'transparent'})`
-              }}
-            />
-          ))}
-        </svg>
+        <section className="w-full md:w-1/2 lg:w-2/5 text-center p-4 flex flex-col items-center justify-between min-h-[400px] md:min-h-[450px]">
+          <div
+            ref={startRef}
+            className="inline-block scale-100 sm:scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] p-6 sm:p-8 rounded-xl"
+          >
+            <IoPersonOutline size="36px" />
+          </div>
 
-        <section className='flex items-center justify-around w-full max-w-sm md:max-w-md mx-auto'>
-          {data.map((profile, index) => (
-            <div 
-              key={profile.id}
-              ref={iconRefs[index]}
-              className={`p-5 sm:p-6 rounded-xl cursor-pointer transition-all duration-300 ${activeId === profile.id 
-                ? 'scale-105 sm:scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929]' 
-                : 'border border-solid border-gray-600 text-white hover:bg-gray-700 hover:border-gray-500 scale-95 sm:scale-100'}`}
-              onClick={() => handleClick(profile.id)}
-            >
-              {profile.icon}
-            </div>
-          ))}
+          <svg ref={svgRef} width="100%" height="200px" className="my-4" style={{ overflow: 'visible' }}>
+            {paths.map((path, index) => (
+              <motion.path
+                key={index}
+                d={path}
+                strokeWidth="2.5"
+                fill="none"
+                stroke={data[index].iconColor}
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: activeId === index ? (isClicked ? 1 : [0, 1, 0]) : 0 }}
+                transition={{
+                  duration: isClicked ? 0.5 : 8,
+                  ease: 'easeInOut',
+                  times: isClicked ? undefined : [0, 0.5, 1],
+                }}
+                style={{
+                  filter: `drop-shadow(0 0 8px ${
+                    activeId === index ? data[index].iconColor : 'transparent'
+                  })`,
+                }}
+              />
+            ))}
+          </svg>
+
+          <section className="flex items-center justify-around w-full max-w-sm md:max-w-md mx-auto">
+            {data.map((profile, index) => (
+              <div
+                key={profile.id}
+                ref={iconRefs[index]}
+                className={`p-5 sm:p-6 rounded-xl cursor-pointer transition-all duration-300 ${
+                  activeId === profile.id
+                    ? 'scale-105 sm:scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929]'
+                    : 'border border-solid border-gray-600 text-white hover:bg-gray-700 hover:border-gray-500 scale-95 sm:scale-100'
+                }`}
+                onClick={() => handleClick(profile.id)}
+              >
+                {profile.icon}
+              </div>
+            ))}
+          </section>
         </section>
-      </section>
-    </div>
+      </div>
+
+      {/* ✅ Resources Button with Next.js Link */}
+      <div className="flex justify-center mt-10 mb-10">
+        <Link href="/resources">
+          <span className="inline-block bg-[#FFD600] text-[#181818] font-semibold px-6 py-3 rounded-lg shadow hover:bg-[#FFBB00] transition relative z-[10]">
+            Resources
+          </span>
+        </Link>
+      </div>
+    </>
   );
-}
- 
+};
+
 export default Profiles;
