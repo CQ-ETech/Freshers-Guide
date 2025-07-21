@@ -3,61 +3,6 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import '../app/globals.css';
 
-function LoadingText({ text, className, delay = 0, alwaysAnimate = false }: { text: string; className?: string; delay?: number; alwaysAnimate?: boolean }) {
-  const [isVisible, setIsVisible] = useState(alwaysAnimate);
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (alwaysAnimate) {
-      setIsVisible(true);
-      return;
-    }
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [alwaysAnimate]);
-
-  return (
-    <span
-      ref={ref}
-      className={
-        (className || '') +
-        ' inline-block transition-all duration-700 ease-out' +
-        (isVisible ? ' opacity-100 translate-y-0' : ' opacity-0 translate-y-8')
-      }
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {text}
-    </span>
-  );
-}
-
-function TypingText({ text, className = '', delay = 0 }: { text: string; className?: string; delay?: number }) {
-  const [displayed, setDisplayed] = useState('');
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    let i = 0;
-    function type() {
-      setDisplayed(text.slice(0, i));
-      if (i <= text.length) {
-        timeout = setTimeout(type, i === 0 ? delay : 30);
-        i++;
-      }
-    }
-    type();
-    return () => clearTimeout(timeout);
-  }, [text, delay]);
-  return <span className={className}>{displayed}</span>;
-}
-
 function FadeInOnScroll({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLParagraphElement>(null);
@@ -92,7 +37,7 @@ function FadeInOnScroll({ children, className = '', delay = 0 }: { children: Rea
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col items-center">
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-24 text-center w-full max-w-4xl mx-auto animate-fade-in min-h-[40vh] mt-4 mb-10 sm:mb-16">
         <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#FFF700] via-[#FFD600] to-[#FFB300] py-4 font-comfortaa">
@@ -113,29 +58,29 @@ export default function Home() {
         <div className="relative z-10 flex flex-col gap-12 sm:gap-16 md:gap-20 w-full items-stretch">
           {/* Section 1 */}
           <div className="flex flex-col md:flex-row items-center md:justify-between gap-8 sm:gap-12 md:gap-20">
-            <img src="/thought-catalog-505eectW54k-unsplash.jpg" alt="Freshers Visual" className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl shadow-2xl object-cover object-center mb-6 md:mb-0 md:mr-8" />
-            <FadeInOnScroll delay={50} className="leading-relaxed text-[#FFF9E3] text-base sm:text-lg md:text-2xl lg:text-3xl font-semibold text-left max-w-2xl md:max-w-3xl md:self-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] font-comfortaa">
+            <img src="/thought-catalog-505eectW54k-unsplash.jpg" alt="Freshers Visual" className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl shadow-2xl object-cover object-center mb-6 md:mb-0" />
+            <FadeInOnScroll delay={50} className="leading-relaxed text-[#FFF9E3] text-base sm:text-lg md:text-2xl lg:text-3xl font-semibold text-center md:text-left max-w-2xl md:max-w-3xl md:self-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] font-comfortaa">
               {`Your first year is for exploring, making friends, and enjoying campus life. Build good habits and a strong foundation. Take time to discover your interests—there's no rush! Attend orientation, get to know your batchmates, and don't hesitate to ask for help.`}
             </FadeInOnScroll>
           </div>
           {/* Section 2 */}
           <div className="flex flex-col md:flex-row-reverse items-center md:justify-between gap-8 sm:gap-12 md:gap-20">
-            <img src="/afif-ramdhasuma-jl4BQJs87Do-unsplash.jpg" alt="Clubs Visual" className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl shadow-2xl object-cover object-center mb-6 md:mb-0 md:ml-8" />
+            <img src="/afif-ramdhasuma-jl4BQJs87Do-unsplash.jpg" alt="Clubs Visual" className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl shadow-2xl object-cover object-center mb-6 md:mb-0" />
             <FadeInOnScroll delay={100} className="leading-relaxed text-[#FFF9E3] text-base sm:text-lg md:text-2xl lg:text-3xl font-semibold text-center md:text-left max-w-2xl md:max-w-3xl md:self-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] font-comfortaa">
               {`Try out clubs, sports, and events. Participate in fests, workshops, and team activities to learn beyond academics. Start building your network and learn from seniors—they're here to guide you. Explore different domains to find what excites you.`}
             </FadeInOnScroll>
           </div>
           {/* Section 3 */}
           <div className="flex flex-col md:flex-row items-center md:justify-between gap-8 sm:gap-12 md:gap-20">
-            <img src="/towfiqu-barbhuiya-Jxi526YIQgA-unsplash.jpg" alt="Growth Visual" className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl shadow-2xl object-cover object-center mb-6 md:mb-0 md:mr-8" />
-            <div className="flex flex-col items-center md:items-end w-full">
-              <FadeInOnScroll delay={150} className="leading-relaxed text-[#FFF9E3] text-base sm:text-lg md:text-2xl lg:text-3xl font-semibold mb-6 text-left max-w-2xl md:max-w-3xl md:self-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] font-comfortaa">
+            <img src="/towfiqu-barbhuiya-Jxi526YIQgA-unsplash.jpg" alt="Growth Visual" className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl shadow-2xl object-cover object-center mb-6 md:mb-0" />
+            <div className="flex flex-col items-center md:items-start w-full">
+              <FadeInOnScroll delay={150} className="leading-relaxed text-[#FFF9E3] text-base sm:text-lg md:text-2xl lg:text-3xl font-semibold mb-6 text-center md:text-left max-w-2xl md:max-w-3xl md:self-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] font-comfortaa">
                 {`Focus on your well-being, enjoy hostel life, and keep learning. Use your first year to try new things, make mistakes, and grow. The confidence and skills you gain now will help you in every step ahead. Remember, IIT Kharagpur offers endless opportunities—academics, research, entrepreneurship, and more. Stay curious and make your journey count!`}
               </FadeInOnScroll>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
