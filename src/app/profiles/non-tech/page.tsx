@@ -74,8 +74,8 @@ export default function NonTechProfiles() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen text-white py-12 px-6">
-      <h1 className="text-4xl font-bold text-center mb-8 text-yellow-400">
+    <div className="min-h-screen text-white py-12 px-6 sm:px-8 md:px-12">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-yellow-400">
         Explore Non-Tech Profiles
       </h1>
 

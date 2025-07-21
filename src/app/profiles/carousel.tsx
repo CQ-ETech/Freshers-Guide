@@ -82,7 +82,7 @@ const Carousel = ({ data }: CarouselProps) => {
   return ( 
     <div className="carousel text-center jusitfy-center pt-10 pb-[100px]">
       <div className="main-carousel flex justify-center mt-0 mb-0">
-        <section className='flex w-[65vw] h-[500px] items-center overflow-hidden relative'>
+        <section className='flex w-[90vw] md:w-[65vw] h-[450px] md:h-[500px] items-center overflow-hidden relative'>
           {data.map((profile) => (
             topId === profile.id &&
             <Image
@@ -108,7 +108,7 @@ const Carousel = ({ data }: CarouselProps) => {
               className={`w-full h-full shrink-0 absolute rounded-lg`}
             >
               <motion.h3 
-                className={`top-heading text-3xl overflow-hidden absolute top-[0px] left-[0px] p-4 font-bold ${profile.textCol}`}
+                className={`top-heading text-2xl md:text-3xl overflow-hidden absolute top-[0px] left-[0px] p-4 font-bold ${profile.textCol}`}
                 animate={{ x: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, `-100%`], opacity: [0, 1, 1, 1, 1, 1, 1] }}
                 transition={{ duration: 7 }}
               >
@@ -116,14 +116,14 @@ const Carousel = ({ data }: CarouselProps) => {
               </motion.h3>
 
               <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden text-left p-4 ${profile.textCol} font-semibold`}>
-                <motion.h3 className='text-1xl overflow-hidden pb-4'
+                <motion.h3 className='text-base md:text-lg overflow-hidden pb-4'
                   animate={{ x: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, `-150%`], opacity: [0, 1, 1, 1, 1, 1, 1] }}
                   transition={{ duration: 7, delay: 0.2 }}
                 >
                   {profile.description}
                 </motion.h3>
 
-                <Link href={profile.href} className='underline text-1xl hover:no-underline'>
+                <Link href={profile.href} className='underline text-base md:text-lg hover:no-underline'>
                   Read More
                 </Link>
               </section>
@@ -132,18 +132,18 @@ const Carousel = ({ data }: CarouselProps) => {
               className={`w-full h-full shrink-0 absolute rounded-lg`}
             >
               <motion.h3 
-                className={`top-heading text-3xl overflow-hidden absolute top-[0px] left-[0px] p-4 font-bold ${profile.textCol}`}
+                className={`top-heading text-2xl md:text-3xl overflow-hidden absolute top-[0px] left-[0px] p-4 font-bold ${profile.textCol}`}
               >
                 {profile.name}
               </motion.h3>
 
               <section className={`body-text absolute bottom-[0px] left-[0px] overflow-hidden text-left p-4 ${profile.textCol} font-semibold`}>
-                <motion.h3 className='text-1xl overflow-hidden pb-4 font-light'
+                <motion.h3 className='text-base md:text-lg overflow-hidden pb-4 font-light'
                 >
                   {profile.description}
                 </motion.h3>
 
-                <Link href={profile.href} className='underline text-1xl hover:no-underline'>
+                <Link href={profile.href} className='underline text-base md:text-lg hover:no-underline'>
                   Read More
                 </Link>
               </section>
@@ -153,10 +153,10 @@ const Carousel = ({ data }: CarouselProps) => {
       </div>
 
       <div className={`carousel-navigation cursor-pointer flex flex-wrap justify-center`}>
-        <div className='w-[65vw] flex justify-center'>
+        <div className='w-[90vw] md:w-[65vw] flex justify-center'>
           {data.map((profile) => (
             <motion.div 
-              className={`navigator h-[150px] w-[50%] flex flex-col justify-center ${profile.navCol} text-2xl font-extrabold active:underline border-[1px]`}
+              className={`navigator h-[120px] md:h-[150px] w-1/2 md:w-[50%] flex flex-col justify-center ${profile.navCol} text-xl md:text-2xl font-extrabold active:underline border-[1px]`}
               onClick={handleClick}
               key={profile.id}
               id={`${profile.id}`}
@@ -168,7 +168,7 @@ const Carousel = ({ data }: CarouselProps) => {
             </motion.div>
           ))}
         </div>
-        <svg height='4px' width='65vw'>
+        <svg height='4px' width='65vw' className='w-[90vw] md:w-[65vw]'>
           <motion.path 
             d={`M ${window.innerWidth * 0.65 * topId / data.length} 2 L ${window.innerWidth * 0.65 * (topId + 1) / data.length} 2`}
             strokeWidth='8'
