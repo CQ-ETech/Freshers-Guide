@@ -32,14 +32,6 @@ export default function RootLayout({
         <main className="min-h-screen relative z-10 pt-28 border-b border-[#232323]/60">
           {children}
           <ScrollToTopButton />
-          <div className="w-full flex justify-center my-8">
-          <a
-            href="/resources"
-            className="inline-block bg-[#FFD600] text-[#181818] font-semibold px-6 py-3 rounded-lg shadow hover:bg-[#FFBB00] transition relative z-[10]"
-          >
-          Resources
-          </a>
-          </div>
         </main>
         <Footer />
       </body>
