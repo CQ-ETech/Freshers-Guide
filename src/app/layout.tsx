@@ -9,7 +9,7 @@ import Navbar from '../components/navbar/page';
 const comfortaa = Comfortaa({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Communiqué | Fresher's Guide",
+  title: "Fresher's Guide | Communiqué",
   description: 'Your guide to summer opportunities and career paths',
 };
 
