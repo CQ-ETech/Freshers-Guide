@@ -10,7 +10,7 @@ const comfortaa = Comfortaa({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Fresher's Guide | Communiqué",
-  description: 'Your guide to career paths',
+  description: 'Empowering Freshers to make the most of their life in KGP.',
 };
 
 export default function RootLayout({
