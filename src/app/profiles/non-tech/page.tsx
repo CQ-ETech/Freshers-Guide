@@ -81,24 +81,23 @@ export default function NonTechProfiles() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen text-white py-12 px-6 sm:px-8 md:px-12">
+    <div className="min-h-screen text-white py-12 px-6 sm:px-8 md:px-12 relative">
       {/* Heading */}
+      {/* Back Button */}
+      <div className="mb-12 text-left">
+        <button
+          onClick={() => router.push('/profiles')}
+          className="px-6 py-3 rounded-full text-yellow-400/50 underline font-semibold hover:no-underline transition-all italic absolute top-10 left-10"
+        >
+          ← Back to Profiles
+        </button>
+      </div> 
       <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-yellow-400">
         Explore Non-Tech Profiles
       </h1>
 
       {/* Carousel Section */}
-      <Carousel data={data} />
-
-      {/* Back Button */}
-      <div className="my-12 text-center">
-        <button
-          onClick={() => router.push('/profiles')}
-          className="px-6 py-3 rounded-full bg-yellow-500 text-black font-semibold hover:bg-yellow-400 transition-all"
-        >
-          ← Back to Categories
-        </button>
-      </div>      
+      <Carousel data={data} />     
     </div>
   );
 }

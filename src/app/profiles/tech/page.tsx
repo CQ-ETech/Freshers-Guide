@@ -6,6 +6,7 @@ import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg"
 import Simple from "./assets/ben-kolde-bs2Ba7t69mM-unsplash-edited.jpg";
 import WallE from "./assets/ray-rui-SyzQ5aByJnE-unsplash.jpg";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const Carousel = dynamic(() => import("../carousel"), { ssr: false });
 
@@ -43,6 +44,14 @@ const Tech = () => {
   return (
     <div className="mb-[-20px]">
       <section className="bg-black hero mt-[-50px] pt-5 w-full flex flex-col first-break:flex-row justify-between relative min-h-[75vh] second-break:min-h-[75vh]">
+        {/* Back Button */}
+        <div className="mb-12 text-left absolute top-5 left-0 first-break:top-10">
+          <Link href="/profiles"
+            className="px-6 py-3 rounded-full text-yellow-400/60 underline font-semibold hover:no-underline transition-all italic"
+          >
+            ← Back to Profiles
+          </Link>
+        </div>
         <div
           className={`hero-text mt-12 first-break:mt-20 w-full first-break:w-[70%] second-break:w-full min-h-fit first-break:min-h-screen overflow-hidden px-8 first-break:px-24 second-break:px-12`}
         >
@@ -53,12 +62,10 @@ const Tech = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.75 }}
           >
-            Tech {" "}
-            <br className="hidden first-break:block" />
+            Tech <br className="hidden first-break:block" />
             infrastructure
             <br className="hidden first-break:block" /> to boost
-            <br className="hidden first-break:block" /> your
-            skills
+            <br className="hidden first-break:block" /> your skills
           </motion.h1>
 
           <motion.h4
