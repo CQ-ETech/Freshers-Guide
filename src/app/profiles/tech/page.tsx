@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg";
-import Carousel from '../carousel';
 import Simple from './assets/ben-kolde-bs2Ba7t69mM-unsplash-edited.jpg';
 import WallE from './assets/ray-rui-SyzQ5aByJnE-unsplash.jpg';
+import dynamic from 'next/dynamic';
+
+const Carousel = dynamic(() => import('../carousel'), { ssr: false });
 
 const data = [
   {
@@ -37,10 +39,10 @@ const data = [
 const Tech = () => {
   return ( 
     <div className='mb-[-20px]'>
-      <section className="bg-black hero mt-[-10px] pt-5 min-h-screen w-full flex justify-between relative bg-[#000000]">
-        <div className={`hero-text mt-20 w-[60%] min-h-screen overflow-hidden pl-[12vw]`}>
+      <section className="bg-black hero mt-[-50px] pt-5 min-h-screen w-full flex flex-col md:flex-row justify-between relative">
+        <div className={`hero-text mt-12 md:mt-20 w-full md:w-[60%] min-h-fit md:min-h-screen overflow-hidden px-8 md:pl-[12vw]`}>
           <motion.h1 
-            className="text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-[5rem]"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-8 md:pb-[5rem] text-center md:text-left"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -50,7 +52,7 @@ const Tech = () => {
           </motion.h1>
 
           <motion.h4 
-            className="text-2xl font-bold text-[#c7c1b2]"
+            className="text-xl sm:text-2xl font-bold text-[#c7c1b2] text-center md:text-left"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -61,13 +63,13 @@ const Tech = () => {
         </div>
         
         <motion.div 
-          className={`w-[40%] h-screen`}
+          className={`w-full md:w-[40%] h-[50vh] md:h-screen mt-8 md:mt-0`}
           initial={{ x: 50, opacity: 0, rotateX: 45 }}
           animate={{ x: 0, opacity: 1, rotateX: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
         >
-          <Image src={LaptopImage} alt={`hero image`} className="w-full min-h-screen" />
+          <Image src={LaptopImage} alt={`hero image`} className="w-full h-full md:min-h-screen object-cover" />
         </motion.div>
       </section>
 

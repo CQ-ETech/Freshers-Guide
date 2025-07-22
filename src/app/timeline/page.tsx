@@ -257,7 +257,7 @@ export default function Timeline() {
   const checkpointCount = timelineData.length;
 
   return (
-    <div className="min-h-screen bg-[#181818] text-[#FFF8E4] py-12 px-6 relative">
+    <div className="min-h-screen bg-[#181818] text-[#FFF8E4] py-12 px-2 sm:px-6 relative">
       {/* Background elements */}
       <div className="fixed inset-0 bg-[url('/pexels-pixabay-235992.jpg')] opacity-5 bg-cover bg-center pointer-events-none z-[1]"></div>
       <div className="fixed inset-0 bg-gradient-to-t from-[#181818] via-[#181818]/50 to-[#181818] pointer-events-none z-[2]"></div>
@@ -278,8 +278,9 @@ export default function Timeline() {
           </p>
         </section>
 
-        {/* Vertical Progress Tube */}
-        <div ref={barContainerRef} className="absolute left-0 top-0 h-full flex flex-col items-center justify-center z-50" style={{width:'80px'}}>
+        {/* Responsive Progress Bar */}
+        {/* Always show vertical progress bar on all screens */}
+        <div ref={barContainerRef} className="flex absolute left-0 top-0 h-full flex-col items-center justify-center z-50" style={{width:'80px'}}>
           <div
             className="relative w-3 bg-[#150000] border-2 border-[#FFBB00] rounded-full overflow-visible shadow-2xl flex items-start ml-[calc(50vw-600px)]"
             style={{
@@ -296,7 +297,6 @@ export default function Timeline() {
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{boxShadow:'0 0 32px 8px #FFBB0099, 0 0 64px 16px #FFEA0044'}}></div>
               </div>
             </div>
-
             {/* Checkpoints */}
             {checkpointPositions.length === checkpointCount && checkpointPositions.map((pos, i) => (
               <div
@@ -322,7 +322,7 @@ export default function Timeline() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: visible === index ? 1 : 0.7, x: 0 }}
               transition={{ duration: 0.5 }}
-              className={`group bg-gradient-to-br from-[#150000]/95 via-[#150000]/90 to-[#731900]/20 backdrop-blur-sm border-l-8 rounded-2xl p-12 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-10 relative transition-all duration-700 min-h-[400px] transform perspective-1000 hover:rotate-y-2 hover:-rotate-x-2 
+              className={`group bg-gradient-to-br from-[#150000]/95 via-[#150000]/90 to-[#731900]/20 backdrop-blur-sm border-l-8 rounded-2xl p-6 sm:p-12 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 relative transition-all duration-700 min-h-[340px] sm:min-h-[400px] transform perspective-1000 hover:rotate-y-2 hover:-rotate-x-2 
                 ${visible === index 
                   ? 'border-[#FFBB00] scale-105 ring-2 ring-[#FFEA00]/30 shadow-[0_0_50px_-12px_#FFBB00]' 
                   : 'border-[#731900] hover:border-[#FFBB00]/50 hover:scale-[1.03] hover:shadow-[0_0_30px_-5px_#FFBB00]'
@@ -332,13 +332,13 @@ export default function Timeline() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#FFBB00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#FFBB00]/10 via-transparent to-[#FFEA00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               
-              <div className="flex-shrink-0 flex flex-col items-center md:items-start w-56 md:w-72 relative z-10 transform transition-transform duration-500 group-hover:translate-x-2">
-                <h2 className="text-4xl font-bold mb-3 text-[#FFBB00] group-hover:text-[#FFEA00] transition-colors duration-300 group-hover:scale-105 transform font-comfortaa">{item.title}</h2>
-                <p className="text-xl text-[#FFEA00] mb-3 opacity-90 group-hover:opacity-100 transition-all duration-300 font-comfortaa">{item.months}</p>
-                <p className="text-lg text-[#FFF8E4] font-medium mb-3 group-hover:text-[#FFEA00]/90 transition-colors duration-300 font-comfortaa">{item.note}</p>
+              <div className="flex-shrink-0 flex flex-col items-center md:items-start w-44 sm:w-56 md:w-72 relative z-10 transform transition-transform duration-500 group-hover:translate-x-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-[#FFBB00] group-hover:text-[#FFEA00] transition-colors duration-300 group-hover:scale-105 transform font-comfortaa">{item.title}</h2>
+                <p className="text-base sm:text-xl text-[#FFEA00] mb-3 opacity-90 group-hover:opacity-100 transition-all duration-300 font-comfortaa">{item.months}</p>
+                <p className="text-sm sm:text-lg text-[#FFF8E4] font-medium mb-3 group-hover:text-[#FFEA00]/90 transition-colors duration-300 font-comfortaa">{item.note}</p>
               </div>
               <div className="flex-1 text-left relative z-10 transform transition-all duration-500 group-hover:translate-x-3">
-                <ul className="list-disc pl-8 space-y-4 text-xl text-[#FFF8E4]/90">
+                <ul className="list-disc pl-6 sm:pl-8 space-y-2 sm:space-y-4 text-base sm:text-xl text-[#FFF8E4]/90">
                   {item.details && item.details.map((d, i) => (
                     <motion.li 
                       key={i}

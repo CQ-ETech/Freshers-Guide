@@ -138,14 +138,22 @@ const steps = [
 
 export default function DataProfile() {
   return (
-    <div className='text-center min-h-screen text-white py-10 px-6'>
-      <h1 className="text-6xl font-bold h-[200px] m-10 text-center text-[#ffd700]">Data Profile</h1>
+    // Responsive container with max-width, centering, and adaptive padding
+    <div className='min-h-screen text-white py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'>
+      
+      {/* Responsive heading with adaptive font-size and flexible margins */}
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-[#ffd700] my-12">
+        Data & AI Profile 📊
+      </h1>
+
       <TechLayout generals={generals} steps={steps} />
-      <div className="mt-8 text-left">
-        <Link href="/profiles/tech" className="text-yellow-300 underline hover:no-underline">
-          ← Back to Tech
+
+      {/* Centered back link for better consistency */}
+      <div className="mt-12 text-center">
+        <Link href="/profiles/tech" className="text-yellow-300 underline hover:no-underline text-lg">
+          ← Back to Tech Profiles
         </Link>
       </div>
     </div>
   )
-} 
+}
