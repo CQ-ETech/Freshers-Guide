@@ -7,10 +7,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { href: 'https://www.linkedin.com', label: 'LinkedIn', icon: <FaLinkedin /> },
-    { href: 'https://www.instagram.com', label: 'Instagram', icon: <FaInstagram /> },
-    { href: 'https://www.facebook.com', label: 'Facebook', icon: <FaFacebook /> },
-    { href: 'https://medium.com', label: 'Medium', icon: <SiMedium /> },
+    { href: 'https://www.linkedin.com/company/communiqu%C3%A9-iit-kharagpur/posts/?feedView=all', label: 'LinkedIn', icon: <FaLinkedin /> },
+    { href: 'https://www.instagram.com/communique_iitkgp/', label: 'Instagram', icon: <FaInstagram /> },
+    { href: 'https://www.facebook.com/communique.iitkgp/', label: 'Facebook', icon: <FaFacebook /> },
+    { href: 'https://medium.com/@cq-iitkharagpur', label: 'Medium', icon: <SiMedium /> },
   ];
 
   const quickLinks = [
@@ -19,7 +19,6 @@ const Footer = () => {
     { href: '/profiles', label: 'Profiles' },
     { href: '/resources', label: 'Resources' },
     { href: '/about-us', label: 'About Us' },
-    { href: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -43,7 +42,7 @@ const Footer = () => {
               </h2>
             </div>
             <p className="text-sm leading-relaxed text-yellow-50">
-              The official soft skills and personality development society of IIT Kharagpur. Empowering students for their career journey.
+              The official soft skills and personality development society of IIT Kharagpur. Empowering freshers to make the most of their life in KGP..
             </p>
             <div>
               <span className="block text-xs font-semibold text-yellow-400 mb-1">Address:</span>
