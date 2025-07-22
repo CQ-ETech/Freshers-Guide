@@ -169,15 +169,23 @@ const Carousel = ({ data }: CarouselProps) => {
           ))}
         </div>
         <svg height='4px' width='65vw' className='w-[90vw] md:w-[65vw]'>
-          <motion.path 
-            d={`M ${window.innerWidth * 0.65 * topId / data.length} 2 L ${window.innerWidth * 0.65 * (topId + 1) / data.length} 2`}
-            strokeWidth='8'
-            fill='none'
-            stroke={ data[topId].strokeColor }
-            initial={{ pathLength: 0 }}
-            animate={ isClicked ? { pathLength: 1 } : { pathLength: [0, 1] }}
-            transition={ isClicked ? { duration: 1 } : { duration: 7, repeat: Infinity, ease: 'linear' }}
-          />
+          {(() => {
+            const svgWidth = typeof window !== 'undefined' ? (window.innerWidth < 768 ? window.innerWidth * 0.9 : window.innerWidth * 0.65) : 0;
+            const startX = svgWidth * topId / data.length;
+            const endX = svgWidth * (topId + 1) / data.length;
+            const d = `M ${startX} 2 L ${endX} 2`;
+            return (
+              <motion.path 
+                d={d}
+                strokeWidth='8'
+                fill='none'
+                stroke={ data[topId].strokeColor }
+                initial={{ pathLength: 0 }}
+                animate={ isClicked ? { pathLength: 1 } : { pathLength: [0, 1] }}
+                transition={ isClicked ? { duration: 1 } : { duration: 7, repeat: Infinity, ease: 'linear' }}
+              />
+            );
+          })()}
         </svg>
       </div>
     </div>

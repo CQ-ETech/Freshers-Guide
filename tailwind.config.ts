@@ -18,6 +18,10 @@ const config: Config = {
           to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
+      screens: {
+        'first-break': '1200px',
+        'second-break': '600px',
+      }
     },
   },
   plugins: [],

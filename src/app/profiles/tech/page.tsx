@@ -1,81 +1,99 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Image from "next/image";
 import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg";
-import Simple from './assets/ben-kolde-bs2Ba7t69mM-unsplash-edited.jpg';
-import WallE from './assets/ray-rui-SyzQ5aByJnE-unsplash.jpg';
-import dynamic from 'next/dynamic';
+import Simple from "./assets/ben-kolde-bs2Ba7t69mM-unsplash-edited.jpg";
+import WallE from "./assets/ray-rui-SyzQ5aByJnE-unsplash.jpg";
+import dynamic from "next/dynamic";
 
-const Carousel = dynamic(() => import('../carousel'), { ssr: false });
+const Carousel = dynamic(() => import("../carousel"), { ssr: false });
 
 const data = [
   {
-    name: 'SDE',
-    description: 'For individuals with a strong inclination for logical problem-solving, system design, and continuous technical advancement through structured coding practices',
+    name: "SDE",
+    description:
+      "For individuals with a strong inclination for logical problem-solving, system design, and continuous technical advancement through structured coding practices",
     image: Simple,
-    bgColor: 'bg-gray-400',
-    bottomGradient: 'bg-gradient-to-t from-gray-500 via-gray-400 to gray-300',
-    textCol: 'text-white-700',
-    navCol: 'text-gray-400',
-    strokeColor: 'gray',
-    href: '/profiles/tech/sde',
-    id: 0
+    bgColor: "bg-gray-400",
+    bottomGradient: "bg-gradient-to-t from-gray-500 via-gray-400 to gray-300",
+    textCol: "text-white-700",
+    navCol: "text-gray-400",
+    strokeColor: "gray",
+    href: "/profiles/tech/sde",
+    id: 0,
   },
   {
-    name: 'Data',
-    description: 'For individuals with a deep interest in AI and data science, equipped with strong analytical skills and a drive to leverage statistical and computational methods for intelligent system development.',
+    name: "Data",
+    description:
+      "For individuals with a deep interest in AI and data science, equipped with strong analytical skills and a drive to leverage statistical and computational methods for intelligent system development.",
     image: WallE,
-    bgColor: 'bg-orange-400',
-    bottomGradient: 'bg-gradient-to-t from-orange-500 via-orange-400 to orange-300',
-    textCol: 'text-gray-100',
-    navCol: 'text-gray-400',
-    strokeColor: 'gray',
-    href: '/profiles/tech/data',
-    id: 1
+    bgColor: "bg-orange-400",
+    bottomGradient:
+      "bg-gradient-to-t from-orange-500 via-orange-400 to orange-300",
+    textCol: "text-gray-100",
+    navCol: "text-gray-400",
+    strokeColor: "gray",
+    href: "/profiles/tech/data",
+    id: 1,
   },
 ];
 
 const Tech = () => {
-  return ( 
-    <div className='mb-[-20px]'>
-      <section className="bg-black hero mt-[-50px] pt-5 min-h-screen w-full flex flex-col md:flex-row justify-between relative">
-        <div className={`hero-text mt-12 md:mt-20 w-full md:w-[60%] min-h-fit md:min-h-screen overflow-hidden px-8 md:pl-[12vw]`}>
-          <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-8 md:pb-[5rem] text-center md:text-left"
+  return (
+    <div className="mb-[-20px]">
+      <section className="bg-black hero mt-[-50px] pt-5 w-full flex flex-col first-break:flex-row justify-between relative min-h-[75vh] second-break:min-h-[75vh]">
+        <div
+          className={`hero-text mt-12 first-break:mt-20 w-full first-break:w-[70%] second-break:w-full min-h-fit first-break:min-h-screen overflow-hidden px-8 first-break:px-24 second-break:px-12`}
+        >
+          <motion.h1
+            className="text-4xl sm:text-6xl first-break:text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-8 first-break:pb-[5rem] text-center first-break:text-left second-break:text-center"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75 }}
           >
-            Tech<br /> infrastructure<br /> to boost<br /> your skills
+            Tech {" "}
+            <br className="hidden first-break:block" />
+            infrastructure
+            <br className="hidden first-break:block" /> to boost
+            <br className="hidden first-break:block" /> your
+            skills
           </motion.h1>
 
-          <motion.h4 
-            className="text-xl sm:text-2xl font-bold text-[#c7c1b2] text-center md:text-left"
+          <motion.h4
+            className="text-xl sm:text-2xl font-bold text-[#c7c1b2] text-center first-break:text-left"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, delay: 0.25 }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eos quisquam distinctio deserunt ipsa quod, accusantium exercita
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eos
+            quisquam distinctio deserunt ipsa quod, accusantium exercita
           </motion.h4>
         </div>
-        
-        <motion.div 
-          className={`w-full md:w-[40%] h-[50vh] md:h-screen mt-8 md:mt-0`}
+
+        <motion.div
+          className="hidden first-break:flex w-full first-break:w-[40%] max-h-screen items-center justify-center mt-8 first-break:mt-0 px-4 first-break:px-0"
           initial={{ x: 50, opacity: 0, rotateX: 45 }}
           animate={{ x: 0, opacity: 1, rotateX: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
         >
-          <Image src={LaptopImage} alt={`hero image`} className="w-full h-full md:min-h-screen object-cover" />
+          <div className="w-[90%] first-break:w-full ml-auto">
+            <Image
+              src={LaptopImage}
+              alt="hero image"
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
         </motion.div>
       </section>
 
       <Carousel data={data} />
     </div>
-   );
-}
- 
+  );
+};
+
 export default Tech;
