@@ -210,15 +210,6 @@ const Profiles = () => {
           </div>
         </div>
       </div>
-
-      <div className="text-center mt-4 mb-10">
-        <Link
-          href="/resources"
-          className="inline-block bg-yellow-400 text-gray-900 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition-colors text-lg transform hover:scale-105"
-        >
-          View All Resources
-        </Link>
-      </div>
     </>
   );
 };

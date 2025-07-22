@@ -5,6 +5,7 @@ import Footer from '../components/footer/page';
 import GoldParticles from '../components/GoldParticles';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import Navbar from '../components/navbar/page';
+import ResourcesButton from '../components/ResourcesButton';
 
 const comfortaa = Comfortaa({ subsets: ['latin'] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           {children}
           <ScrollToTopButton />
         </main>
+        <ResourcesButton /> 
         <Footer />
       </body>
     </html>

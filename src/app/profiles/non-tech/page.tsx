@@ -98,12 +98,7 @@ export default function NonTechProfiles() {
         >
           ← Back to Categories
         </button>
-      </div>
-
-      
-
-      {/* ✔ Resources Link */}
-      
+      </div>      
     </div>
   );
 }
