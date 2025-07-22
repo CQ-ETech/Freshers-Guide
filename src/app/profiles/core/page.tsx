@@ -10,7 +10,6 @@ import {
   MdOutlineVerified, MdOutlineShare
 } from 'react-icons/md';
 
-// Data arrays (steps, opportunities, tips) and colorMap remain the same...
 const steps = [
   {
     stage: 'Start',
@@ -35,7 +34,7 @@ const steps = [
   },
   {
     stage: 'Engage',
-    heading: 'Talk to Profs & Seniors',
+    heading: 'Talk to Professors & Seniors',
     desc: 'Reach out for project guidance, LORs, and help in research direction.',
     icon: <FaChalkboardTeacher size={24} />,
     color: 'green',
@@ -103,7 +102,6 @@ const tips = [
   'Maintain a strong academic profile — CGPA matters a lot for core and research roles.',
   'Start reading IEEE or Springer papers early to understand real research trends.',
   'Create a good LinkedIn and keep a portfolio/GitHub with core projects.',
-  'Build strong SOPs and get LORs early from professors you worked with.',
 ];
 
 const colorMap: { [key: string]: string } = {
@@ -116,12 +114,11 @@ const colorMap: { [key: string]: string } = {
   purple: 'text-purple-400',
 };
 
-
 export default function CoreProfileRoadmap() {
   return (
     <main className="font-comfortaa relative bg-transparent text-yellow-100 min-h-screen py-16 sm:py-24 px-4 sm:px-6 overflow-x-hidden">
 
-      {/* Header and other sections remain the same... */}
+      {/* Header */}
       <section className="text-center mb-16 sm:mb-20">
         <motion.div
           initial={{ opacity: 0, y: -40 }}
@@ -163,7 +160,6 @@ export default function CoreProfileRoadmap() {
                 <motion.div
                   whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 234, 0, 0.4)' }}
                   transition={{ duration: 0.3 }}
-                  // ✅ FIX: Removed inline style and used Tailwind classes for a complete border.
                   className="bg-zinc-900 p-6 rounded-lg shadow-xl border-2 border-yellow-600/80 transform transition-transform duration-300 text-left"
                 >
                   <p className={`${colorMap[step.color] || 'text-yellow-400'} font-bold text-sm mb-1`}>{step.stage}</p>
@@ -178,13 +174,32 @@ export default function CoreProfileRoadmap() {
         </div>
       </section>
 
-      {/* Opportunities */}
+      {/* Opportunities Section with 3-2 Layout and very small gap below */}
       <section className="relative z-10 max-w-7xl mx-auto mt-24 sm:mt-32 px-4">
         <h2 className="text-3xl sm:text-4xl text-yellow-400 font-extrabold text-center mb-12 sm:mb-16 drop-shadow-md">
           Explore Your Opportunities
         </h2>
-        <div className="flex flex-wrap justify-center gap-8">
-          {opportunities.map((opp, idx) => (
+
+        {/* First Row: 3 Opportunities */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center mb-8">
+          {opportunities.slice(0, 3).map((opp, idx) => (
+            <div key={idx} className="w-full sm:w-64 md:w-72 transform-gpu">
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5, boxShadow: '0 0 30px rgba(255, 193, 7, 0.4)' }}
+                transition={{ duration: 0.3 }}
+                className="text-yellow-100 flex flex-col bg-zinc-900 p-6 rounded-xl shadow-lg h-full items-start text-left"
+              >
+                <div className="mb-4 text-yellow-500">{opp.icon}</div>
+                <h3 className="text-lg font-extrabold text-yellow-50 mb-2">{opp.title}</h3>
+                <p className="text-sm text-yellow-300">{opp.detail}</p>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
+        {/* Second Row: 2 Opportunities with tighter gap */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-items-center">
+          {opportunities.slice(3).map((opp, idx) => (
             <div key={idx} className="w-full sm:w-64 md:w-72 transform-gpu">
               <motion.div
                 whileHover={{ scale: 1.05, y: -5, boxShadow: '0 0 30px rgba(255, 193, 7, 0.4)' }}
@@ -220,6 +235,7 @@ export default function CoreProfileRoadmap() {
           ))}
         </div>
       </section>
+
     </main>
   );
 }
