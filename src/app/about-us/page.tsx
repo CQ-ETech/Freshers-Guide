@@ -8,7 +8,7 @@ const communiqueEvents = [
   {
     title: 'GMUN',
     icon: <FaComments className="text-[#FFD600] text-3xl mb-2" />, 
-    description: 'The Group Model United Nations (GMUN) is a simulation event that helps students develop diplomacy, negotiation, and public speaking skills.'
+    description: 'The Globql Model United Nations (GMUN) is a simulation event that helps students develop diplomacy, negotiation, and public speaking skills.'
   },
   {
     title: 'CV Review Drive',
