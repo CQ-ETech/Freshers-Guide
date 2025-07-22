@@ -10,8 +10,8 @@ import {
   MdOutlineVerified, MdOutlineShare
 } from 'react-icons/md';
 
+// Data arrays (steps, opportunities, tips) and colorMap remain the same...
 const steps = [
-  // ... your steps data remains the same
   {
     stage: 'Start',
     heading: 'Know the Core Branch Scope',
@@ -71,7 +71,6 @@ const steps = [
 ];
 
 const opportunities = [
-  // ... your opportunities data remains the same
   {
     title: 'R&D (India & Abroad)',
     detail: 'Join research labs in IITs, IISc or top foreign universities. Involves deep technical work and often leads to publications.',
@@ -100,7 +99,6 @@ const opportunities = [
 ];
 
 const tips = [
-  // ... your tips data remains the same
   'Use your semester breaks for short research projects or internships with professors at IITs, IISc, or NITs.',
   'Maintain a strong academic profile — CGPA matters a lot for core and research roles.',
   'Start reading IEEE or Springer papers early to understand real research trends.',
@@ -118,11 +116,12 @@ const colorMap: { [key: string]: string } = {
   purple: 'text-purple-400',
 };
 
+
 export default function CoreProfileRoadmap() {
   return (
     <main className="font-comfortaa relative bg-transparent text-yellow-100 min-h-screen py-16 sm:py-24 px-4 sm:px-6 overflow-x-hidden">
 
-      {/* Header */}
+      {/* Header and other sections remain the same... */}
       <section className="text-center mb-16 sm:mb-20">
         <motion.div
           initial={{ opacity: 0, y: -40 }}
@@ -158,15 +157,14 @@ export default function CoreProfileRoadmap() {
               className={`relative w-full py-8 flex ${idx % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'} pl-16 sm:pl-0`}
             >
               <div className="relative w-full sm:max-w-md">
-                {/* ✅ FIX: Changed -left-10 to -left-16 to prevent icon from clashing with text on mobile */}
                 <div className={`absolute top-1/2 -translate-y-1/2 -left-16 ${idx % 2 === 0 ? 'sm:left-auto sm:-right-16' : 'sm:-left-16'} w-14 h-14 rounded-full bg-gray-900 border-4 border-yellow-500 flex items-center justify-center shadow-lg`}>
                   {step.icon}
                 </div>
                 <motion.div
                   whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 234, 0, 0.4)' }}
                   transition={{ duration: 0.3 }}
-                  className="bg-zinc-900 p-6 rounded-lg shadow-xl border-t-4 transform transition-transform duration-300 text-left"
-                  style={{ borderColor: '#bfa600' }}
+                  // ✅ FIX: Removed inline style and used Tailwind classes for a complete border.
+                  className="bg-zinc-900 p-6 rounded-lg shadow-xl border-2 border-yellow-600/80 transform transition-transform duration-300 text-left"
                 >
                   <p className={`${colorMap[step.color] || 'text-yellow-400'} font-bold text-sm mb-1`}>{step.stage}</p>
                   <h3 className="text-xl font-bold text-yellow-100 mb-2">{step.heading}</h3>
