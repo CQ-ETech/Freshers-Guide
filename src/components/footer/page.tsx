@@ -42,7 +42,7 @@ const Footer = () => {
               </h2>
             </div>
             <p className="text-sm leading-relaxed text-yellow-50">
-              The official soft skills and personality development society of IIT Kharagpur. Empowering freshers to make the most of their life in KGP..
+              The official soft skills and personality development society of IIT Kharagpur. <br />Empowering freshers to make the most of their life in KGP..
             </p>
             <div>
               <span className="block text-xs font-semibold text-yellow-400 mb-1">Address:</span>

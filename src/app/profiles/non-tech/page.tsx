@@ -100,29 +100,10 @@ export default function NonTechProfiles() {
         </button>
       </div>
 
-      {/* Category Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-        {categories.map((cat) => (
-          <div
-            key={cat.key}
-            onClick={() => router.push(`/profiles/non-tech/${cat.key}`)}
-            className="cursor-pointer bg-[#2a2a2a] hover:bg-[#3a3a3a] border border-yellow-500 rounded-xl p-6 shadow-lg hover:scale-105 transition-all"
-          >
-            <div className="mb-4 text-yellow-400">{cat.icon}</div>
-            <h2 className="text-2xl font-semibold text-yellow-300 mb-2">{cat.name}</h2>
-            <p className="text-gray-300">{cat.description}</p>
-          </div>
-        ))}
-      </div>
+      
 
       {/* ✔ Resources Link */}
-      <div className="text-center mt-8">
-        <Link href="/resources">
-          <span className="inline-block bg-[#FFD600] text-[#181818] font-semibold px-6 py-3 rounded-lg shadow hover:bg-[#FFBB00] transition">
-            Resources
-          </span>
-        </Link>
-      </div>
+      
     </div>
   );
 }
