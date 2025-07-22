@@ -15,6 +15,7 @@ type techLayout = {
 };
 
 const TechLayout = ({ generals, steps }: techLayout) => {
+  
   return (
     <div className="text-left">
       <section className="generals flex justify-center">
