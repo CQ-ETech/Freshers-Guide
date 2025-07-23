@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         <link rel="icon" href="/Favicon/favicon.ico" sizes="any" />
         {/* You can use .png or .svg as well, e.g. /favicon.png */}
