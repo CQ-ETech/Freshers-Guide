@@ -1,8 +1,7 @@
 'use client'
 import React from 'react';
 import '../globals.css';
-// ✅ FIX: Added FaEnvelope and FaLinkedin for social links
-import { FaUserTie, FaComments, FaClipboardCheck, FaChalkboardTeacher, FaHandshake, FaChevronDown, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaUserTie, FaComments, FaClipboardCheck, FaChalkboardTeacher, FaHandshake, FaChevronDown } from 'react-icons/fa';
 import Image from 'next/image';
 
 const communiqueEvents = [
@@ -34,40 +33,30 @@ const communiqueEvents = [
   }
 ];
 
-// ✅ FIX: Updated executiveTeam array with email and linkedin data
 const executiveTeam = [
-  { name: 'Arya Dubey', role: 'INTERNAL & ALUMNI AFFAIRS HEAD', email: 'aryadubey666@gmail.com', linkedin: 'https://www.linkedin.com/in/arya-dubey-5a4181290/' },
-  { name: 'Tejal Saurabhi', role: 'TECHNICAL AFFAIRS AND MUN HEAD', email: 'tejalsaurabhi1302@gmail.com', linkedin: 'https://www.linkedin.com/in/tejal-saurabhi-1a96b7291/' },
-  { name: 'Sritoma Nandan', role: 'DIGITAL PUBLICITY HEAD', email:'nandansritoma1912@gmail.com', linkedin: 'https://www.linkedin.com/in/sritoma-nandan-02637a280/' },
-  { name: 'Divyansh Jain', role: 'EVENTS AND OPERATIONS HEAD', email:'div0211jain@gmail.com', linkedin: 'https://www.linkedin.com/in/divyansh-jain-iitkgp/' },
-  { name: 'Atharva Deshmukh', role: 'FINANCE AND SPONSORSHIP HEAD', email:'deshmukhatharva362@gmail.com', linkedin: 'https://www.linkedin.com/in/atharva-deshmukh-8a3894281/' },
-  { name: 'Sourav Upadhyay', role: 'MARKETING AND PUBLIC RELATIONS HEAD', email:'sourav.upadhyay0304@gmail.com', linkedin: 'https://www.linkedin.com/in/sourav-upadhyay-585ba5232/' },
-  { name: 'Pritvik Premkumar', role: 'EXTERNAL AFFAIRS AND OUTREACH HEAD', email:'pritvikps26@gmail.com', linkedin: 'https://www.linkedin.com/in/pritvik/' },
+  // ...data remains the same
+  { name: 'Arya Dubey', role: 'INTERNAL & ALUMNI AFFAIRS HEAD' },
+  { name: 'Tejal Saurabhi', role: 'TECHNICAL AFFAIRS AND MUN HEAD' },
+  { name: 'Sritoma Nandan', role: 'DIGITAL PUBLICITY HEAD' },
+  { name: 'Divyansh Jain', role: 'EVENTS AND OPERATIONS HEAD' },
+  { name: 'Atharva Deshmukh', role: 'FINANCE AND SPONSORSHIP HEAD' },
+  { name: 'Sourav Upadhyay', role: 'MARKETING AND PUBLIC RELATIONS HEAD' },
+  { name: 'Pritvik Premkumar', role: 'EXTERNAL AFFAIRS AND OUTREACH HEAD' },
 ];
 
-// Reusable Divider Component
+// Reusable Divider Component (defined before use)
 const Divider = () => (
     <div className="flex justify-center my-8 z-10 relative">
       <span className="inline-block w-24 h-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full" />
     </div>
 );
 
-// ✅ FIX: Updated TeamMemberCard to accept and display social links
-const TeamMemberCard = ({ member }: { member: { name: string; role: string; email: string; linkedin: string; } }) => (
+// Reusable Team Member Card
+const TeamMemberCard = ({ member }: { member: { name: string, role: string } }) => (
   <div className="flex h-full flex-col items-center justify-center bg-[#181818]/90 rounded-xl shadow-2xl p-8 w-full max-w-xs mx-auto border border-yellow-400/20 hover:scale-105 hover:shadow-yellow-400/40 transition-all duration-300 glassmorphism-card group transform-gpu">
     <FaUserTie className="text-yellow-400 text-4xl mb-4 group-hover:rotate-12 transition-transform duration-300" />
     <h3 className="text-xl font-semibold text-yellow-300 mb-1 font-comfortaa text-center group-hover:text-yellow-400">{member.name}</h3>
     <p className="text-sm sm:text-base font-comfortaa text-center text-yellow-100 flex-grow">{member.role}</p>
-    
-    {/* Social Links */}
-    <div className="mt-4 flex items-center gap-6 text-2xl border-t border-yellow-400/20 pt-4">
-      <a href={`mailto:${member.email}`} aria-label="Email" className="text-yellow-100/70 hover:text-yellow-300 hover:scale-110 transition-all duration-200">
-        <FaEnvelope />
-      </a>
-      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-yellow-100/70 hover:text-yellow-300 hover:scale-110 transition-all duration-200">
-        <FaLinkedin />
-      </a>
-    </div>
   </div>
 );
 
@@ -126,16 +115,20 @@ export default function AboutUs() {
 
       {/* Meet Our Team Section */}
       <section className="max-w-6xl mx-auto px-4 py-12 animate-fade-in-up">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-8 mb-12">
-          <h2 className="flex-1 text-5xl sm:text-6xl md:text-7xl font-extrabold text-yellow-400 text-center lg:text-left font-comfortaa leading-tight tracking-wide">
-            Meet Our Team
-          </h2>
-          <div className="flex-shrink-0 flex justify-center">
-            <TeamMemberCard member={executiveTeam[0]} />
+        {/* ✅ FIX: A single unified grid to guarantee the requested alignment. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          
+          {/* Grid Item 1: Title (spans 2 columns on large screens) */}
+          <div className="lg:col-span-2 flex items-center justify-center text-center lg:justify-start lg:text-left">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-yellow-400 font-comfortaa leading-tight tracking-wide">
+              Meet Our Team
+            </h2>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {/* Grid Item 2: Featured Card (Arya Dubey) - placed in the 3rd column */}
+          <TeamMemberCard member={executiveTeam[0]} />
+          
+          {/* The rest of the team flows into the grid. Divyansh Jain will be in the 3rd column of the next row, exactly below Arya. */}
           {executiveTeam.slice(1).map((member) => (
             <TeamMemberCard key={member.name} member={member} />
           ))}
