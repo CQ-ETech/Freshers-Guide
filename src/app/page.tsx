@@ -71,7 +71,7 @@ export default function Home() {
             href="#extras"
             className="inline-block px-6 sm:px-8 py-3 bg-[#FFD600] text-[#181818] font-semibold rounded-lg shadow-lg hover:bg-[#FFB300] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#FFD600]/40 transition-all duration-300 text-base sm:text-lg tracking-wide mt-4 border border-[#FFB300]/60 font-comfortaa"
           >
-            Explore Extras
+            Browse More
           </a>
         </div>
       </section>
@@ -113,11 +113,7 @@ export default function Home() {
               join to explore their interests and hobbies. These clubs range
               from technical societies to cultural groups, providing a platform
               for students to showcase their talents and collaborate with
-              like-minded individuals. Such as:
-              <span className="font-semibold italic">
-                {" "}
-                Coding Club, Robotics Club, Dance Club, Music Club, etc.
-              </span>
+              like-minded individuals. 
               <br />
               <br />
               There are also a few societies that are not a part of TSG, such as
