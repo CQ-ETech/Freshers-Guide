@@ -44,7 +44,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className="bg-gray-900/80 backdrop-blur-md text-[#FFBB00] p-2 sm:p-4 shadow-2xl fixed top-0 left-0 right-0 z-50 w-full border-b border-yellow-400/30">
+    <nav className="bg-gray-/80 backdrop-blur-md text-[#FFBB00] p-2 sm:p-4 shadow-2xl fixed top-0 left-0 right-0 z-50 w-full border-b border-yellow-400/30">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         {/* Logo and Site Title */}

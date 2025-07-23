@@ -22,7 +22,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900/50 text-white py-10 sm:py-14 border-t-2 border-yellow-400/30 shadow-2xl relative z-20">
+    <footer className= "bg-gray-/80 bg-transparent text-white py-10 sm:py-14 border-t-2 border-yellow-400/30 shadow-2xl relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Main content grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-x-8 lg:gap-x-12">
@@ -77,7 +77,7 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <FaPhone className="text-yellow-400 text-base" /> 
                 <a href="tel:+911234567890" className="text-yellow-100 hover:text-white transition">
-                  +91 12345 67890
+                  +91 96796 89456
                 </a>
               </li>
             </ul>
