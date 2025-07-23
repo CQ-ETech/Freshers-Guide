@@ -82,7 +82,7 @@ export default function Home() {
       >
         <div className="relative z-10 flex flex-col gap-12 sm:gap-16 md:gap-20 w-full items-stretch">
           {/* Section 1 */}
-          <div className="p-8 bg-gradient-to-br from-[#1a1f2e] via-[#2a2f3e] to-[#161B22] rounded-2xl shadow-2xl shadow-yellow-500/10 border border-[#FFD700]/20 hover:shadow-yellow-400/20 transition-all duration-300">
+          <div className="p-8 bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-2xl shadow-2xl shadow-yellow-500/10 border border-[#FFD700]/20 hover:shadow-yellow-400/10 transition-all duration-300">
             <h2 className="text-3xl text-center font-bold bg-gradient-to-r from-[#FFD700] via-[#FFEA70] to-[#FFC700] bg-clip-text text-transparent">
               Technology Students' Gymkhana (TSG)
             </h2>
@@ -116,22 +116,21 @@ export default function Home() {
               like-minded individuals. 
               <br />
               <br />
-              There are also a few societies that are not a part of TSG, such as
-              <span className="font-semibold italic"> SHARE, etc.</span>
+              
               <br />
               <br />
               To learn more about the TSG and its committees{" "}
               <a
-                href="https://gymkhana.iitkgp.ac.in/"
-                className="italic text-[#F472B6] text-xl underline hover:no-underline"
-              >
-                Click here
-              </a>
+                  href="https://gymkhana.iitkgp.ac.in/"
+                  className="inline-block not-italic font-semibold text-white bg-yellow-400/10 border border-yellow-400/20 rounded-lg px-4 py-1 mx-3 hover:bg-yellow-400/10 hover:text-yellow-100 transition-all"
+                >
+                  Click here
+                </a>
             </p>
           </div>
           {/* Section 2 */}
-          <div className="p-8 bg-gradient-to-br from-[#221827] via-[#2c1d34] to-[#161B22] rounded-2xl shadow-2xl shadow-pink-400/10 border border-pink-500/20 hover:shadow-pink-400/20 transition-all duration-300">
-            <h2 className="text-3xl text-center font-bold bg-gradient-to-r from-[#F472B6] via-[#FFB6C1] to-[#F472B6] bg-clip-text text-transparent">
+          <div className="p-8 bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-2xl shadow-2xl  shadow-yellow-500/10 border border-[#FFD700]/20 hover:shadow-yellow-400/20 transition-all duration-300">
+            <h2 className="text-3xl text-center font-bold bg-gradient-to-r from-[#FFD700] via-[#FFEA70] to-[#FFC700] bg-clip-text text-transparent">
               General Championship (GC)
             </h2>
 
@@ -172,17 +171,12 @@ export default function Home() {
               <br />
               <br />
               To know about last year's winners{" "}
-              <a
-                href="#"
-                className="text-[#F472B6] italic text-xl underline hover:no-underline"
-              >
-                Click here
-              </a>
+              
             </h3>
           </div>
           {/* Section 3 */}
-          <div className="p-8 bg-gradient-to-br from-[#152336] via-[#1e2f47] to-[#161B22] rounded-2xl shadow-2xl shadow-blue-400/10 border border-blue-500/20 hover:shadow-blue-400/20 transition-all duration-300">
-            <h2 className="text-3xl text-center font-bold bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#2563EB] bg-clip-text text-transparent">
+          <div className="p-8 bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-2xl shadow-2xl  shadow-yellow-500/10 border  border-[#FFD700]/20 hover:shadow-yellow-400/10 transition-all duration-300">
+            <h2 className="text-3xl text-center font-bold bg-gradient-to-r from-[#FFD700] via-[#FFEA70] to-[#FFC700] bg-clip-text text-transparent">
               Inter IIT
             </h2>
 
@@ -201,12 +195,7 @@ export default function Home() {
               <br />
               <br />
               To learn more about the past winners of inter IIT and the events{" "}
-              <a
-                href="#"
-                className="text-[#F472B6] italic underline hover:no-underline"
-              >
-                Click here
-              </a>
+              
             </h3>
           </div>
         </div>
