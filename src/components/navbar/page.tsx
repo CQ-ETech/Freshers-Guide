@@ -18,16 +18,13 @@ export default function Navbar() {
     { href: '/about-us', label: 'About Us' },
   ];
 
-  // Effect to handle side-effects when menu is opened/closed
   useEffect(() => {
-    // 1. Lock body scroll
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
 
-    // 2. Add keyboard listener for 'Escape' key
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMenuOpen(false);
@@ -35,13 +32,11 @@ export default function Navbar() {
     };
     document.addEventListener('keydown', handleEscape);
 
-    // Cleanup function to remove event listener and restore scroll
     return () => {
       document.body.style.overflow = 'auto';
       document.removeEventListener('keydown', handleEscape);
     };
   }, [menuOpen]);
-
 
   return (
     <nav className="bg-gray-/80 backdrop-blur-md text-[#FFBB00] p-2 sm:p-4 shadow-2xl fixed top-0 left-0 right-0 z-50 w-full border-b border-yellow-400/30">
@@ -61,8 +56,8 @@ export default function Navbar() {
           </span>
         </Link>
         
-        {/* Hamburger Icon for Mobile */}
-        <div className="md:hidden">
+        {/* Hamburger Icon: now visible up to lg screens */}
+        <div className="lg:hidden">
           <button
             className="text-3xl p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-md"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -74,8 +69,8 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-x-4 lg:gap-x-6">
+        {/* Desktop Navigation Links: now only visible on lg+ screens */}
+        <div className="hidden lg:flex items-center gap-x-4 lg:gap-x-6">
           {navLinks.map(link => (
             <Link 
               key={link.href} 
@@ -96,12 +91,12 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation Dropdown with Animation */}
+      {/* Mobile Navigation Dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             id="mobile-menu"
-            className="md:hidden flex flex-col items-center bg-gray-900/95 backdrop-blur-md border-t border-yellow-400/30 shadow-2xl absolute top-full left-0 w-full h-screen"
+            className="lg:hidden flex flex-col items-center bg-black  backdrop-blur-md border-t border-yellow-400/30 shadow-2xl absolute top-full left-0 w-full h-screen"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -118,7 +113,7 @@ export default function Navbar() {
                       : 'text-gray-200 hover:bg-yellow-400/10 hover:text-yellow-400'
                     }`
                   }
-                  onClick={() => setMenuOpen(false)} // Close menu on link click
+                  onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
