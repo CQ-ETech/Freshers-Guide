@@ -106,12 +106,14 @@ const tips = [
 
 const colorMap: { [key: string]: string } = {
   yellow: 'text-yellow-400',
-  cyan: 'text-cyan-400',
-  rose: 'text-rose-400',
-  green: 'text-green-400',
-  blue: 'text-blue-400',
-  amber: 'text-amber-400',
-  purple: 'text-purple-400',
+  yellow1: 'text-yellow-400',
+  yellow2: 'text-yellow-400',
+  yellow3: 'text-yellow-400',
+  yellow4: 'text-yellow-400',
+  yellow5: 'text-yellow-400',
+  yellow6: 'text-yellow-400',
+ 
+ 
 };
 
 export default function CoreProfileRoadmap() {
