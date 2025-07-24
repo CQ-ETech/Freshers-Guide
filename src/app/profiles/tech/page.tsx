@@ -5,10 +5,8 @@ import Image from "next/image";
 import LaptopImage from "./assets/ales-nesetril-Im7lZjxeLhg-unsplash-edited.jpg";
 import Simple from "./assets/ben-kolde-bs2Ba7t69mM-unsplash-edited.jpg";
 import WallE from "./assets/ray-rui-SyzQ5aByJnE-unsplash.jpg";
-import dynamic from "next/dynamic";
 import Link from "next/link";
-
-const Carousel = dynamic(() => import("../carousel"), { ssr: false });
+import Carousel from "../carousel";
 
 const data = [
   {
@@ -46,7 +44,8 @@ const Tech = () => {
       <section className="bg-black hero mt-[-50px] pt-5 w-full flex flex-col first-break:flex-row justify-between relative min-h-[75vh] second-break:min-h-[75vh]">
         {/* Back Button */}
         <div className="mb-12 text-left absolute top-5 left-0 first-break:top-10">
-          <Link href="/profiles"
+          <Link
+            href="/profiles"
             className="px-6 py-3 rounded-full text-yellow-400/60 underline font-semibold hover:no-underline transition-all italic"
           >
             ← Back to Profiles
@@ -75,8 +74,8 @@ const Tech = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.75, delay: 0.25 }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eos
-            quisquam distinctio deserunt ipsa quod, accusantium exercita
+            Unlock hands-on experience with the tools, platforms, and projects
+            that power real-world tech.
           </motion.h4>
         </div>
 

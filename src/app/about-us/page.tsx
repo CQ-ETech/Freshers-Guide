@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import '../globals.css';
-// The necessary icons are already imported
 import { FaUserTie, FaComments, FaClipboardCheck, FaChalkboardTeacher, FaHandshake, FaChevronDown, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import Image from 'next/image';
 
@@ -34,8 +33,8 @@ const communiqueEvents = [
   }
 ];
 
-// ✅ FIX: Updated executiveTeam array with email and linkedin data
 const executiveTeam = [
+  // The data now includes social links
   { name: 'Arya Dubey', role: 'INTERNAL & ALUMNI AFFAIRS HEAD', email: 'aryadubey666@gmail.com', linkedin: 'https://www.linkedin.com/in/arya-dubey-5a4181290/' },
   { name: 'Tejal Saurabhi', role: 'TECHNICAL AFFAIRS AND MUN HEAD', email: 'tejalsaurabhi1302@gmail.com', linkedin: 'https://www.linkedin.com/in/tejal-saurabhi-1a96b7291/' },
   { name: 'Sritoma Nandan', role: 'DIGITAL PUBLICITY HEAD', email:'nandansritoma1912@gmail.com', linkedin: 'https://www.linkedin.com/in/sritoma-nandan-02637a280/' },
@@ -45,21 +44,19 @@ const executiveTeam = [
   { name: 'Pritvik Premkumar', role: 'EXTERNAL AFFAIRS AND OUTREACH HEAD', email:'pritvikps26@gmail.com', linkedin: 'https://www.linkedin.com/in/pritvik/' },
 ];
 
-// Reusable Divider Component (defined before use)
+// Reusable Divider Component
 const Divider = () => (
     <div className="flex justify-center my-8 z-10 relative">
       <span className="inline-block w-24 h-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full" />
     </div>
 );
 
-// ✅ FIX: Updated TeamMemberCard to accept and display social links
+// Reusable Team Member Card
 const TeamMemberCard = ({ member }: { member: { name: string; role: string; email: string; linkedin: string; } }) => (
   <div className="flex h-full flex-col items-center justify-center bg-[#181818]/90 rounded-xl shadow-2xl p-8 w-full max-w-xs mx-auto border border-yellow-400/20 hover:scale-105 hover:shadow-yellow-400/40 transition-all duration-300 glassmorphism-card group transform-gpu">
     <FaUserTie className="text-yellow-400 text-4xl mb-4 group-hover:rotate-12 transition-transform duration-300" />
     <h3 className="text-xl font-semibold text-yellow-300 mb-1 font-comfortaa text-center group-hover:text-yellow-400">{member.name}</h3>
     <p className="text-sm sm:text-base font-comfortaa text-center text-yellow-100 flex-grow">{member.role}</p>
-    
-    {/* Social Links */}
     <div className="mt-4 flex items-center gap-6 text-2xl border-t border-yellow-400/20 pt-4">
       <a href={`mailto:${member.email}`} aria-label={`Email ${member.name}`} className="text-yellow-100/70 hover:text-yellow-300 hover:scale-110 transition-all duration-200">
         <FaEnvelope />
@@ -70,7 +67,6 @@ const TeamMemberCard = ({ member }: { member: { name: string; role: string; emai
     </div>
   </div>
 );
-
 
 export default function AboutUs() {
   return (
@@ -136,7 +132,8 @@ export default function AboutUs() {
 
           <TeamMemberCard member={executiveTeam[0]} />
           
-          {executiveTeam.slice(1).map((member) => (
+          {/* ✅ FIX: Added .sort() to arrange the rest of the team alphabetically */}
+          {executiveTeam.slice(1).sort((a, b) => a.name.localeCompare(b.name)).map((member) => (
             <TeamMemberCard key={member.name} member={member} />
           ))}
         </div>
