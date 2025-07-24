@@ -14,6 +14,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/timeline', label: 'Timeline' },
     { href: '/profiles', label: 'Profiles' },
+    { href: '/books', label: 'Books' },
     { href: '/resources', label: 'Resources' },
     { href: '/about-us', label: 'About Us' },
   ];
