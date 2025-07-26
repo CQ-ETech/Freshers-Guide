@@ -112,7 +112,7 @@ const steps = [
     id: 2
   },
   {
-    name: "Step 4: Maching learning with python",
+    name: "Step 4: Machine learning with python",
     content: [
       "Supervised learning: Regression (Linear, Lasso, Ridge), Classification (KNN, SVM, Logistic Regression, Decision Trees)",
       "Unsupervised learning: Clustering (KMeans, DBSCAN), Dimensionality reduction (PCA, t-SNE)",
