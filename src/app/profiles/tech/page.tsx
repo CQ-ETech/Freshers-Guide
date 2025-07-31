@@ -41,7 +41,7 @@ const data = [
 const Tech = () => {
   return (
     <div className="mb-[-20px]">
-      <section className="bg-black hero mt-[-50px] pt-5 w-full flex flex-col first-break:flex-row justify-between relative min-h-[75vh] second-break:min-h-[75vh]">
+      <section className="bg-none first-break:bg-black hero mt-[-50px] first-break:pt-5 first-break:pb-0 w-full flex flex-col first-break:flex-row justify-between relative min-h-auto first-break:min-h-[75vh]">
         {/* Back Button */}
         <div className="mb-12 text-left absolute top-5 left-0 first-break:top-10">
           <Link
@@ -52,12 +52,12 @@ const Tech = () => {
           </Link>
         </div>
         <div
-          className={`hero-text mt-12 first-break:mt-20 w-full first-break:w-[70%] second-break:w-full min-h-fit first-break:min-h-screen overflow-hidden px-8 first-break:px-24 second-break:px-12`}
+          className={`hero-text mt-20 mb-20 first-break:mb-0 first-break:mt-20 w-full first-break:w-[70%] second-break:w-full min-h-fit first-break:min-h-screen overflow-hidden px-8 first-break:px-24 second-break:px-12`}
         >
           <motion.h1
-            className="text-4xl sm:text-6xl first-break:text-7xl font-bold bg-gradient-to-r from-[#00a5c5] via-[#c5a4aa] to-[#aa0920] bg-clip-text text-transparent pb-8 first-break:pb-[5rem] text-center first-break:text-left second-break:text-center"
+            className="text-4xl sm:text-6xl first-break:text-7xl font-bold bg-gradient-to-r from-[#ff9900] via-[#e2f8fa] to-[#ffbb00] first-break:from-[#00a5c5] first-break:via-[#c5a4aa] first-break:to-[#aa0920] bg-clip-text text-transparent pb-8 first-break:pb-[5rem] text-center first-break:text-left second-break:text-center"
             initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75 }}
           >
@@ -70,7 +70,7 @@ const Tech = () => {
           <motion.h4
             className="text-xl sm:text-2xl font-bold text-[#c7c1b2] text-center first-break:text-left"
             initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, delay: 0.25 }}
           >
