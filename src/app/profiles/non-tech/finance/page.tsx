@@ -60,8 +60,8 @@ export default function RoadmapPlanning() {
       </section>
 
       <section className="relative max-w-6xl mx-auto">
-        <div className="relative flex flex-col items-center sm:items-stretch">
-          <div className="absolute h-full w-1 bg-gradient-to-b from-[#bfa600] via-[#a98f00] to-[#8f7700] left-6 sm:left-1/2 sm:transform sm:-translate-x-1/2 z-0"></div>
+        <div className="relative flex flex-col items-center">
+          <div className="absolute h-full w-1 bg-gradient-to-b from-[#bfa600] via-[#a98f00] to-[#8f7700] left-6 sm:left-1/2 sm:-translate-x-1/2 z-0"></div>
           <div className="absolute -top-8 left-6 sm:left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg">START</div>
 
           {steps.map((step, idx) => (
@@ -71,22 +71,33 @@ export default function RoadmapPlanning() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`relative w-full py-8 sm:py-12 flex sm:${idx % 2 === 0 ? 'justify-start' : 'justify-end'} pl-16 sm:pl-0 sm:pr-6`}
+              className="relative w-full my-4 sm:my-6"
             >
-              <div className="relative w-full sm:max-w-md">
-                <div className={`absolute top-1/2 -translate-y-1/2 -left-10 sm:${idx % 2 === 0 ? '-left-16' : '-right-16'} w-14 h-14 rounded-full bg-black border-4 flex items-center justify-center shadow-lg`} style={{ borderColor: `var(--tw-border-${step.color}-500)` }}>
-                  {step.icon}
+              <div className={`flex w-full items-center ${idx % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}>
+                
+                {/* Icon Container - Now correctly centered on the timeline */}
+                <div className="absolute left-6 sm:left-1/2 transform -translate-x-1/2">
+                  <div
+                    className="w-14 h-14 rounded-full bg-black border-4 flex items-center justify-center shadow-lg"
+                    style={{ borderColor: `var(--tw-border-${step.color}-500)` }}
+                  >
+                    {step.icon}
+                  </div>
                 </div>
-                <motion.div
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,255,255,0.6)' }}
-                  transition={{ duration: 0.3 }}
-                  className={`bg-zinc-900 p-6 rounded-lg shadow-xl border-t-4 transform transition-transform duration-300 text-left sm:${idx % 2 === 0 ? 'text-left' : 'text-right'}`}
-                  style={{ borderColor: '#bfa600' }}
-                >
-                  <p className={`text-${step.color}-400 font-bold text-sm mb-1`}>{step.stage}</p>
-                  <h3 className="text-xl font-bold text-yellow-100 mb-2">{step.heading}</h3>
-                  <p className="text-sm text-yellow-300 leading-relaxed">{step.desc}</p>
-                </motion.div>
+
+                {/* Card Container */}
+                <div className="w-full sm:w-1/2 sm:px-8 pl-16">
+                  <motion.div
+                    whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255,255,255,0.6)' }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-zinc-900 p-6 rounded-lg shadow-xl border-t-4 transform transition-transform duration-300"
+                    style={{ borderColor: '#bfa600' }}
+                  >
+                    <p className={`text-${step.color}-400 font-bold text-sm mb-1`}>{step.stage}</p>
+                    <h3 className="text-xl font-bold text-yellow-100 mb-2">{step.heading}</h3>
+                    <p className="text-sm text-yellow-300 leading-relaxed">{step.desc}</p>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}

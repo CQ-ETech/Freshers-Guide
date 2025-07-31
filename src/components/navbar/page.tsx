@@ -53,7 +53,7 @@ export default function Navbar() {
             className="rounded-full p-1 w-10 h-10 sm:w-12 sm:h-12" 
           />
           <span className="truncate text-xl sm:text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-500 transition duration-300">
-            Freshers Guide
+            Freshers' Guide
           </span>
         </Link>
         

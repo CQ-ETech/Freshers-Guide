@@ -143,7 +143,7 @@ export default function DataProfile() {
       
       {/* Responsive heading with adaptive font-size and flexible margins */}
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-[#ffd700] my-12">
-        Data & AI Profile 📊
+        Data & AI Profile
       </h1>
 
       <TechLayout generals={generals} steps={steps} />

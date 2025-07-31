@@ -121,7 +121,7 @@ export default function Resources() {
       {/* Gold particles background */}
       <GoldParticles />
       <div className="min-h-screen flex flex-col items-center justify-center text-[#FFF8E4] px-4 relative z-[3]">
-        <h1 className="text-4xl font-bold mb-6 text-[#FFBB00]">📚 Resources</h1>
+        <h1 className="text-4xl font-bold mb-6 text-[#FFBB00]">Resources</h1>
         <p className="text-lg text-center max-w-xl mb-6">
           Here you'll find a curated sheet of all useful resources across all
           profiles. Bookmark it and refer to it regularly.

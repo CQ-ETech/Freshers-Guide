@@ -112,9 +112,29 @@ const colorMap: { [key: string]: string } = {
   yellow4: 'text-yellow-400',
   yellow5: 'text-yellow-400',
   yellow6: 'text-yellow-400',
- 
- 
+  
 };
+
+// Animation variants for the opportunities section
+const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // This creates the one-by-one effect
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
 
 export default function CoreProfileRoadmap() {
   return (
@@ -142,78 +162,97 @@ export default function CoreProfileRoadmap() {
 
       {/* Roadmap Timeline */}
       <section className="relative max-w-6xl mx-auto">
-        <div className="relative flex flex-col items-center sm:items-stretch">
-          <div className="absolute h-full w-1 bg-gradient-to-b from-yellow-600 via-yellow-700 to-yellow-800 left-6 sm:left-1/2 sm:-translate-x-1/2 z-0"></div>
-          <div className="absolute -top-8 left-6 sm:left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg text-sm">START</div>
+        <div className="relative flex flex-col items-center">
+            <div className="absolute h-full w-1 bg-gradient-to-b from-yellow-600 via-yellow-700 to-yellow-800 left-6 sm:left-1/2 sm:-translate-x-1/2 z-0"></div>
+            <div className="absolute -top-8 left-6 sm:left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg text-sm">START</div>
 
-          {steps.map((step, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 60, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`relative w-full py-8 flex ${idx % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'} pl-16 sm:pl-0`}
-            >
-              <div className="relative w-full sm:max-w-md">
-                <div className={`absolute top-1/2 -translate-y-1/2 -left-16 ${idx % 2 === 0 ? 'sm:left-auto sm:-right-16' : 'sm:-left-16'} w-14 h-14 rounded-full bg-gray-900 border-4 border-yellow-500 flex items-center justify-center shadow-lg`}>
-                  {step.icon}
-                </div>
+            {steps.map((step, idx) => (
                 <motion.div
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 234, 0, 0.4)' }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-zinc-900 p-6 rounded-lg shadow-xl border-2 border-yellow-600/80 transform transition-transform duration-300 text-left"
+                key={idx}
+                initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="relative w-full my-4 sm:my-6"
                 >
-                  <p className={`${colorMap[step.color] || 'text-yellow-400'} font-bold text-sm mb-1`}>{step.stage}</p>
-                  <h3 className="text-xl font-bold text-yellow-100 mb-2">{step.heading}</h3>
-                  <p className="text-sm text-yellow-300 leading-relaxed">{step.desc}</p>
+                <div className={`flex w-full items-center ${idx % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}>
+                    <div className="absolute left-6 sm:left-1/2 transform -translate-x-1/2">
+                    <div className="w-14 h-14 rounded-full bg-gray-900 border-4 border-yellow-500 flex items-center justify-center shadow-lg">
+                        {step.icon}
+                    </div>
+                    </div>
+                    <div className="w-full sm:w-1/2 sm:px-8 pl-16">
+                    <motion.div
+                        whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 234, 0, 0.4)' }}
+                        transition={{ duration: 0.3 }}
+                        className="bg-zinc-900 p-6 rounded-lg shadow-xl border-2 border-yellow-600/80 transform transition-transform duration-300"
+                    >
+                        <p className={`${colorMap[step.color] || 'text-yellow-400'} font-bold text-sm mb-1`}>{step.stage}</p>
+                        <h3 className="text-xl font-bold text-yellow-100 mb-2">{step.heading}</h3>
+                        <p className="text-sm text-yellow-300 leading-relaxed">{step.desc}</p>
+                    </motion.div>
+                    </div>
+                </div>
                 </motion.div>
-              </div>
-            </motion.div>
-          ))}
+            ))}
 
-          <div className="absolute -bottom-8 left-6 sm:left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg text-sm">FINISH</div>
+            <div className="absolute -bottom-8 left-6 sm:left-1/2 transform -translate-x-1/2 px-6 py-2 bg-yellow-500 text-black font-bold rounded-full shadow-lg text-sm">FINISH</div>
         </div>
       </section>
 
-{/* Opportunities Section */}
-<section className="relative z-10 max-w-7xl mx-auto mt-24 sm:mt-32 px-4">
-  <h2 className="text-3xl sm:text-4xl text-yellow-400 font-extrabold text-center mb-12 sm:mb-16 drop-shadow-md">
-    Explore Your Opportunities
-  </h2>
 
-  {/* First Row: 3 Opportunities */}
-  <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center mb-8">
-    {opportunities.slice(0, 3).map((opp, idx) => (
-      <motion.div
-        key={idx}
-        whileHover={{ scale: 1.05, y: -5, boxShadow: '0 0 30px rgba(255, 193, 7, 0.4)' }}
-        transition={{ duration: 0.3 }}
-        className="text-yellow-100 w-full flex flex-col bg-zinc-900 p-6 rounded-xl shadow-lg h-full items-start text-left transform-gpu"
-      >
-        <div className="mb-4 text-yellow-500">{opp.icon}</div>
-        <h3 className="text-lg font-extrabold text-yellow-50 mb-2">{opp.title}</h3>
-        <p className="text-sm text-yellow-300">{opp.detail}</p>
-      </motion.div>
-    ))}
-  </div>
+      {/* Opportunities Section */}
+      <section className="relative z-10 max-w-7xl mx-auto mt-24 sm:mt-32 px-4">
+        <h2 className="text-3xl sm:text-4xl text-yellow-400 font-extrabold text-center mb-12 sm:mb-16 drop-shadow-md">
+          Explore Your Opportunities
+        </h2>
 
-  {/* ✅ FIX: Second Row gap changed from gap-4 to gap-2 */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center max-w-2xl mx-auto">
-    {opportunities.slice(3).map((opp, idx) => (
-      <motion.div
-        key={idx}
-        whileHover={{ scale: 1.05, y: -5, boxShadow: '0 0 30px rgba(255, 193, 7, 0.4)' }}
-        transition={{ duration: 0.3 }}
-        className="text-yellow-100 w-full flex flex-col bg-zinc-900 p-6 rounded-xl shadow-lg h-full items-start text-left transform-gpu"
-      >
-        <div className="mb-4 text-yellow-500">{opp.icon}</div>
-        <h3 className="text-lg font-extrabold text-yellow-50 mb-2">{opp.title}</h3>
-        <p className="text-sm text-yellow-300">{opp.detail}</p>
-      </motion.div>
-    ))}
-  </div>
-</section>
+        {/* First Row: 3 Opportunities */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center mb-8"
+        >
+          {opportunities.slice(0, 3).map((opp, idx) => (
+            <motion.div
+              key={idx}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5, boxShadow: '0 0 30px rgba(255, 193, 7, 0.4)' }}
+              transition={{ duration: 0.5 }}
+              className="text-yellow-100 w-full flex flex-col bg-zinc-900 p-6 rounded-xl shadow-lg h-full items-start text-left transform-gpu"
+            >
+              <div className="mb-4 text-yellow-500">{opp.icon}</div>
+              <h3 className="text-lg font-extrabold text-yellow-50 mb-2">{opp.title}</h3>
+              <p className="text-sm text-yellow-300">{opp.detail}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Second Row: 2 Opportunities */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center max-w-3xl mx-auto"
+        >
+          {opportunities.slice(3).map((opp, idx) => (
+            <motion.div
+              key={idx + 3} // Use a unique key
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5, boxShadow: '0 0 30px rgba(255, 193, 7, 0.4)' }}
+              transition={{ duration: 0.3 }}
+              className="text-yellow-100 w-full flex flex-col bg-zinc-900 p-6 rounded-xl shadow-lg h-full items-start text-left transform-gpu"
+            >
+              <div className="mb-4 text-yellow-500">{opp.icon}</div>
+              <h3 className="text-lg font-extrabold text-yellow-50 mb-2">{opp.title}</h3>
+              <p className="text-sm text-yellow-300">{opp.detail}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
 
       {/* Tips & Tricks */}
       <section className="relative z-10 max-w-5xl mx-auto mt-24 sm:mt-32 px-4">
