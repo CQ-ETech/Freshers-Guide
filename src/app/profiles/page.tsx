@@ -54,7 +54,6 @@ const Profiles = () => {
     useRef<HTMLDivElement>(null),
   ];
 
-  // Function to calculate the SVG paths
   const calculatePaths = () => {
     if (
       !startRef.current ||
@@ -91,7 +90,7 @@ const Profiles = () => {
     if (isClicked) return;
     timeoutRef.current = setTimeout(() => {
       setActiveId((currentId) => (currentId + 1) % data.length);
-    }, 8000);
+    }, 12000); // Total cycle time is 12 seconds
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
@@ -113,7 +112,6 @@ const Profiles = () => {
   return (
     <>
       <div className="text-white min-h-screen flex flex-col md:flex-row items-center justify-center p-4 sm:p-6 md:p-8 gap-y-16 md:gap-x-12 lg:gap-x-20 w-full">
-        {/* Left Column: Text Content */}
         <div className="w-full md:w-1/2 lg:w-2/5 flex flex-col justify-center">
           <AnimatePresence mode="wait">
             {activeProfile && (
@@ -153,7 +151,6 @@ const Profiles = () => {
           </AnimatePresence>
         </div>
 
-        {/* Right Column: Interactive Icons & SVG */}
         <div className="w-full md:w-1/2 lg:w-2/5 flex flex-col items-center justify-between text-center">
           <div
             ref={startRef}
@@ -176,13 +173,15 @@ const Profiles = () => {
                 stroke={data[index].iconColor}
                 initial={{ pathLength: 0 }}
                 animate={{
+                  // ✅ CHANGED: Path animation now includes a "hold" state
                   pathLength:
-                    activeId === index ? (isClicked ? 1 : [0, 1, 0]) : 0,
+                    activeId === index ? (isClicked ? 1 : [0, 1, 1, 1,0]) : 0,
                 }}
                 transition={{
-                  duration: isClicked ? 0.5 : 8,
+                  duration: isClicked ? 0.5 : 12,
                   ease: "easeInOut",
-                  times: isClicked ? undefined : [0, 0.5, 1],
+                  // ✅ CHANGED: Times array creates a "draw, hold, erase" effect
+                  times: isClicked ? undefined : [0, 0.15, 0.85, 1],
                 }}
                 style={{
                   filter: `drop-shadow(0 0 8px ${
