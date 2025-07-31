@@ -83,6 +83,10 @@ const Profiles = () => {
   const handleClick = (id: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setIsClicked(true);
+
+    if(isClicked) {
+      setIsClicked(false);
+    }
     setActiveId(id);
   };
 
@@ -117,11 +121,11 @@ const Profiles = () => {
             {activeProfile && (
               <motion.section
                 key={activeProfile.id}
-                animate={{
+                animate={ isClicked ? { opacity: 1, y: [20, 0] } : {
                   opacity: [0, 1, 1, 1, 1, 1, 1, 1, 0],
                   y: [20, 0, 0, 0, 0, 0, 0, -20],
                 }}
-                transition={{ duration: 12, ease: "easeInOut" }}
+                transition={ isClicked ? undefined : { duration: 12, ease: "easeInOut" }}
               >
                 <h3
                   className="text-xl sm:text-2xl font-bold mb-5 text-center md:text-left flex items-center justify-center md:justify-start"
@@ -202,7 +206,7 @@ const Profiles = () => {
                 key={profile.id}
                 ref={iconRefs[index]}
                 onClick={() => handleClick(profile.id)}
-                className={`p-5 sm:p-8 rounded-xl cursor-pointer transition-all duration-300 transform-gpu ${
+                className={`p-5 sm:p-8 rounded-xl cursor-pointer transition-all duration-300 transform-gpu active:scale-110 ${
                   activeId === profile.id
                     ? "scale-110 sm:scale-115 border-none bg-yellow-400 shadow-[0px_1px_25px_-5px_#fff176] text-gray-800"
                     : "border border-solid border-gray-600 text-white hover:bg-gray-800 hover:border-gray-500 scale-95 sm:scale-100"
