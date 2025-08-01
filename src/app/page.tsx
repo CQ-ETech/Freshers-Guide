@@ -202,6 +202,7 @@ export default function Home() {
               To learn more about TSG and its committees, GC or Inter IIT, visit
               the official Gymkhana website:
               <a
+                target="_blank"
                 href="https://gymkhana.iitkgp.ac.in/"
                 className="inline-block not-italic font-semibold text-white bg-yellow-400/10 border border-yellow-400/20 rounded-lg px-4 py-1 mx-3 my-2 hover:bg-yellow-400/10 hover:text-yellow-100 transition-all"
               >
