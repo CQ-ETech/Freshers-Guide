@@ -30,7 +30,7 @@ export default function RootLayout({
       }>
         <GoldParticles />
         <Navbar />
-        <main className="min-h-screen relative z-10 pt-28 border-b border-[#232323]/60">
+        <main className="relative z-10 pt-28 border-b border-[#232323]/60">
           {children}
           <ScrollToTopButton />
         </main>

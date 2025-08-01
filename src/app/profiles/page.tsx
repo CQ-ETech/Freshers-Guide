@@ -42,6 +42,11 @@ const data = [
 ];
 
 const Profiles = () => {
+  const[isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const [activeId, setActiveId] = useState<number>(-1);
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -56,7 +61,7 @@ const Profiles = () => {
 
   const startRef = useRef<HTMLTableSectionElement>(null);
   let endRef: React.MutableRefObject<HTMLTableSectionElement | null>;
-  let timeout;
+  let timeout, svgStartX, svgEndX;
   const [pathD, sethPathD] = useState<string>("");
 
   const updatePath = () => {
@@ -75,21 +80,16 @@ const Profiles = () => {
     const svg = document.querySelector("svg");
     const svgRect = svg?.getBoundingClientRect();
 
-    const svgStartX = startX - (svgRect?.left || 0) - window.innerWidth * 0.54;
-    const svgEndX = endX - (svgRect?.left || 0) - window.innerWidth * 0.54;
+    if (isClient && window.innerWidth > 1200) {
+      svgStartX = startX - (svgRect?.left || 0) - window.innerWidth * 0.515;
+      svgEndX = endX - (svgRect?.left || 0) - window.innerWidth * 0.515;
+    } else if (isClient && window.innerWidth <= 1200) {
+      svgStartX = startX - (svgRect?.left || 0) - 30;
+      svgEndX = endX - (svgRect?.left || 0) - 30;
+    }
 
     const svgStartY = startY - (svgRect?.top || 0) - 200;
     const svgEndY = endY - (svgRect?.top || 0) - 200;
-
-    console.log(
-      startX,
-      endX,
-      svgRect.left,
-      svgStartX,
-      svgEndX,
-      window.innerWidth,
-      window.outerWidth
-    );
 
     let pathD: string;
     if (activeId === 0) {
@@ -161,22 +161,22 @@ const Profiles = () => {
   useEffect(() => {
     setActiveId(0);
     updatePath();
-    window.addEventListener("resize", updatePath);
-    return () => window.removeEventListener("resize", updatePath);
+    isClient && window.addEventListener("resize", updatePath);
+    return () => isClient && window.removeEventListener("resize", updatePath);
   }, []);
 
   return (
     <div
       className={`body mt-[-20px] ${
         /*bg-gradient-to-b from-[#222222] via-[#323232] to-[#222222]*/ "bg-none"
-      } text-white min-h-screen flex flex-col items-center justify-center`}
+      } text-white`}
     >
-      <div className="flex justify-around w-full">
+      <div className="grid grid-cols-1 first-break:grid-cols-2 w-full">
         {data.map(
           (profile) =>
             activeId === profile.id && (
               <motion.section
-                className="carousel w-[45%] relative"
+                className="carousel relative"
                 key={profile.id}
                 initial={{ opacity: 0 }}
                 animate={
@@ -223,92 +223,104 @@ const Profiles = () => {
             )
         )}
 
-        <section className="animation w-[45%] text-center p-8 border-dashed border-x border-y-0 border-[#2c2c2c]">
-          <section
-            ref={startRef}
-            className="inline-block scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition p-10 rounded-xl hover:from-orange-400 hover:to-orange-600"
-          >
-            <IoPersonOutline size="36px" />
-          </section>
+        <section className="animation text-center p-8">
+          {isClient && window.innerWidth > 1200 && (
+            <section
+              ref={startRef}
+              className="inline-block scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] p-10 rounded-xl hover:from-orange-400 hover:to-orange-600"
+            >
+              <IoPersonOutline className="text-[20px] second-break:text-[36px]" />
+            </section>
+          )}
 
-          <svg width="100%" height="40vh">
-            <motion.path
-              d={pathD}
-              strokeWidth="3"
-              fill="none"
-              animate={
-                isClicked
-                  ? {
-                      pathLength: [0, 1],
-                      stroke: [
-                        "#32bef2",
-                        "#a66cff",
-                        "#d81e5b",
-                        "#00c2d1",
-                        "#32bef2",
-                        "#a66cff",
-                        "#d81e5b",
-                        "#00c2d1",
-                      ],
-                    }
-                  : {
-                      pathLength: [0, 1, 1, 1, 1, 1, 1, 0],
-                      stroke: [
-                        "#32bef2",
-                        "#a66cff",
-                        "#d81e5b",
-                        "#00c2d1",
-                        "#32bef2",
-                        "#a66cff",
-                        "#d81e5b",
-                        "#00c2d1",
-                      ],
-                    }
-              }
-              transition={
-                isClicked ? { duration: 2 } : { duration: 15, repeat: Infinity }
-              }
-            />
-          </svg>
+          {isClient && window.innerWidth > 1200 && (
+            <svg width="100%" height="40vh">
+              <motion.path
+                d={pathD}
+                strokeWidth="3"
+                fill="none"
+                animate={
+                  isClicked
+                    ? {
+                        pathLength: [0, 1],
+                        stroke: [
+                          "#32bef2",
+                          "#a66cff",
+                          "#d81e5b",
+                          "#00c2d1",
+                          "#32bef2",
+                          "#a66cff",
+                          "#d81e5b",
+                          "#00c2d1",
+                        ],
+                      }
+                    : {
+                        pathLength: [0, 1, 1, 1, 1, 1, 1, 0],
+                        stroke: [
+                          "#32bef2",
+                          "#a66cff",
+                          "#d81e5b",
+                          "#00c2d1",
+                          "#32bef2",
+                          "#a66cff",
+                          "#d81e5b",
+                          "#00c2d1",
+                        ],
+                      }
+                }
+                transition={
+                  isClicked
+                    ? { duration: 2 }
+                    : { duration: 15, repeat: Infinity }
+                }
+              />
+            </svg>
+          )}
 
           <section className="flex items-center justify-evenly w-full">
             <div
               ref={laptopRef}
               className={`${
                 activeId === 0
-                  ? "scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition"
-                  : "border border-solid border-[#e2f8fa] transform transition-[transform,border,box-shadow] duration-[250ms,100ms,250ms] ease-[ease,ease,ease] scale-100 hover:scale-110 hover:border-none hover:bg-[#ffea00] hover:shadow-[0px_1px_25px_-5px_#fff176] hover:text-[#292929] transform transition active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition"
-              } p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
+                  ? "scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] "
+                  : "border border-solid border-[#e2f8fa] transform transition-[transform,border,box-shadow] duration-[250ms,100ms,250ms] ease-[ease,ease,ease] scale-100 hover:scale-110 hover:border-none hover:bg-[#ffea00] hover:shadow-[0px_1px_25px_-5px_#fff176] hover:text-[#292929] active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176]"
+              } p-8 second-break:p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
               id="0"
               onClick={handleClick}
             >
-              <FaCode size="36px" id="0" />
+              <FaCode size={isClient && window.innerWidth < 600 ? `24px` : `36px`} id="0" />
             </div>
 
             <div
               ref={documentRef}
               className={`${
                 activeId === 1
-                  ? "scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition"
-                  : "border border-solid border-[#e2f8fa] transform transition-[transform,border,box-shadow] duration-[250ms,100ms,250ms] ease-[ease,ease,ease] scale-100 hover:scale-110 hover:border-none hover:bg-[#ffea00] hover:shadow-[0px_1px_25px_-5px_#fff176] hover:text-[#292929] transform transition active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition"
-              } p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
+                  ? "scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176]"
+                  : "border border-solid border-[#e2f8fa] transform transition-[transform,border,box-shadow] duration-[250ms,100ms,250ms] ease-[ease,ease,ease] scale-100 hover:scale-110 hover:border-none hover:bg-[#ffea00] hover:shadow-[0px_1px_25px_-5px_#fff176] hover:text-[#292929] active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176]"
+              } p-8 second-break:p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
               id="1"
               onClick={handleClick}
             >
-              <Landmark size="36px" id="1" />
+              <Landmark
+                size={isClient && window.innerWidth < 600 ? `24px` : `36px`}
+                id="1"
+              />
             </div>
 
             <div
               ref={coreRef}
               className={`${
                 activeId === 2
-                  ? "scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition"
-                  : "border border-solid border-[#e2f8fa] transform transition-[transform,border,box-shadow] duration-[250ms,100ms,250ms] ease-[ease,ease,ease] scale-100 hover:scale-110 hover:border-none hover:bg-[#ffea00] hover:shadow-[0px_1px_25px_-5px_#fff176] hover:text-[#292929] transform transition active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176] transform transition"
-              } p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
+                  ? "scale-110 border-none bg-[#ffea00] shadow-[0px_1px_25px_-5px_#fff176] text-[#292929] transform transition-[transform,box-shadow] duration-250 ease active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176]"
+                  : "border border-solid border-[#e2f8fa] transform transition-[transform,border,box-shadow] duration-[250ms,100ms,250ms] ease-[ease,ease,ease] scale-100 hover:scale-110 hover:border-none hover:bg-[#ffea00] hover:shadow-[0px_1px_25px_-5px_#fff176] hover:text-[#292929] active:scale-90 active:shadow-[0px_1px_20px_-4px_#fff176]"
+              } p-8 second-break:p-10 rounded-xl hover:from-orange-400 hover:to-orange-600 cursor-pointer text-white`}
               id="2"
               onClick={handleClick}
             >
-              <Factory size="36px" id="2" />
+              <Factory
+                size={isClient && window.innerWidth < 600 ? `24px` : `36px`}
+                id="2"
+              />
             </div>
           </section>
         </section>
