@@ -10,7 +10,7 @@ import ResourcesButton from '../components/ResourcesButton';
 const comfortaa = Comfortaa({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Fresher's Guide | Communiqué",
+  title: "Freshers' Guide | Communiqué",
   description: 'Empowering Freshers to make the most of their life in KGP.',
 };
 
