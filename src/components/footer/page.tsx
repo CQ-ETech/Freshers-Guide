@@ -107,7 +107,7 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className="mt-10 sm:mt-12 text-center text-sm border-t border-yellow-400/30 pt-6">
           <p className="text-yellow-100/80 hover:text-white transition">
-            &copy; {currentYear} Freshers Guide. All rights reserved.
+            &copy; {currentYear} Freshers' Guide. All rights reserved.
           </p>
         </div>
       </div>
