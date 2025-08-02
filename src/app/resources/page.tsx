@@ -20,8 +20,8 @@ const nonTechResources = [
   },
   {
     name: "Zerodha Varsity",
-    link: "https://drive.google.com/folderview?id=1_jOIFqHc7B4iFhjsxtIkJSbyGUWWWnvq",
-    linkText: "Google Drive",
+    link: "https://zerodha.com/varsity/",
+    linkText: "Zerodha Varsity Homepage",
   },
   {
     name: "CFA L1 Dec'17 Mind Maps",
@@ -58,7 +58,7 @@ const techResources = [
   },
   {
     name: "Deep Generative Models",
-    link: "https://docs.google.com/document/d/163lUL1Q0c7ai_5lb8MSDihIU8-BlUkZjD5bH3LjMvrY/edit?usp=sharing",
+    link: "https://www.youtube.com/watch?v=XZ0PMRWXBEU&list=PLoROMvodv4rPOWA-omMM6STXaWW4FvJT8",
     linkText: "Youtube Playlist",
   },
   {
